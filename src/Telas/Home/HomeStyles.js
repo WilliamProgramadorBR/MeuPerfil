@@ -1,7 +1,7 @@
 // HomeStyles.js
 
 
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle,keyframes } from 'styled-components';
 
 
 export const ButtonContainer = styled.div`
@@ -23,21 +23,50 @@ export const CurriculoContainer = styled.div`
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Archivo Black', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 `;
 
+
+
+const moveLetters = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 export const Titulo = styled.h1`
   font-size: 36px;
   margin: 0;
   font-weight: bold;
-  color: red;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Substitua 'Roboto' pelo nome da fonte escolhida */
+  color: #555;
   margin-top: 200px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: #ff0000;
+    animation: ${moveLetters} 0.5s ease infinite;
+  }
 `;
+
+
 
 export const FotoRedonda = styled.img`
   width: 200px;
