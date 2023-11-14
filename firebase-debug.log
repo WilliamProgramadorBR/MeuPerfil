@@ -1,0 +1,102 @@
+[debug] [2023-11-14T15:47:18.799Z] ----------------------------------------------------------------------
+[debug] [2023-11-14T15:47:18.802Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\willi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2023-11-14T15:47:18.803Z] CLI Version:   12.8.1
+[debug] [2023-11-14T15:47:18.803Z] Platform:      win32
+[debug] [2023-11-14T15:47:18.804Z] Node Version:  v18.17.1
+[debug] [2023-11-14T15:47:18.806Z] Time:          Tue Nov 14 2023 12:47:18 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2023-11-14T15:47:18.806Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-14T15:47:18.924Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-14T15:47:18.927Z] > authorizing via signed-in user (william100william@gmail.com)
+[debug] [2023-11-14T15:47:18.927Z] [iam] checking project meuperfil-b964d for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2023-11-14T15:47:18.932Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/meuperfil-b964d:testIamPermissions [none]
+[debug] [2023-11-14T15:47:18.933Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/meuperfil-b964d:testIamPermissions x-goog-quota-user=projects/meuperfil-b964d
+[debug] [2023-11-14T15:47:18.933Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/meuperfil-b964d:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-11-14T15:47:19.912Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/meuperfil-b964d:testIamPermissions 200
+[debug] [2023-11-14T15:47:19.913Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/meuperfil-b964d:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-11-14T15:47:19.915Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/meuperfil-b964d [none]
+[debug] [2023-11-14T15:47:20.322Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/meuperfil-b964d 200
+[debug] [2023-11-14T15:47:20.322Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/meuperfil-b964d {"projectId":"meuperfil-b964d","projectNumber":"811677734300","displayName":"Meuperfil","name":"projects/meuperfil-b964d","resources":{"hostingSite":"meuperfil-b964d","realtimeDatabaseInstance":"meuperfil-b964d-default-rtdb"},"state":"ACTIVE","etag":"1_08180757-225c-4c28-8a26-a86bc93bb68b"}
+[debug] [2023-11-14T15:47:20.324Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/meuperfil-b964d [none]
+[debug] [2023-11-14T15:47:20.722Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/meuperfil-b964d 200
+[debug] [2023-11-14T15:47:20.723Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/meuperfil-b964d {"projectId":"meuperfil-b964d","projectNumber":"811677734300","displayName":"Meuperfil","name":"projects/meuperfil-b964d","resources":{"hostingSite":"meuperfil-b964d","realtimeDatabaseInstance":"meuperfil-b964d-default-rtdb"},"state":"ACTIVE","etag":"1_08180757-225c-4c28-8a26-a86bc93bb68b"}
+[info] 
+[info] === Deploying to 'meuperfil-b964d'...
+[info] 
+[info] i  deploying database, hosting 
+[info] i  database: checking rules syntax... 
+[debug] [2023-11-14T15:47:20.731Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/meuperfil-b964d/locations/-/instances/meuperfil-b964d-default-rtdb [none]
+[debug] [2023-11-14T15:47:21.659Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/meuperfil-b964d/locations/-/instances/meuperfil-b964d-default-rtdb 200
+[debug] [2023-11-14T15:47:21.659Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/meuperfil-b964d/locations/-/instances/meuperfil-b964d-default-rtdb {"name":"projects/811677734300/locations/us-central1/instances/meuperfil-b964d-default-rtdb","project":"projects/811677734300","databaseUrl":"https://meuperfil-b964d-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2023-11-14T15:47:21.663Z] >>> [apiv2][query] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json dryRun=true
+[debug] [2023-11-14T15:47:21.663Z] >>> [apiv2][body] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json "{\n  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */\n  \"rules\": {\n    \".read\": false,\n    \".write\": false\n  }\n}"
+[debug] [2023-11-14T15:47:21.984Z] <<< [apiv2][status] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2023-11-14T15:47:21.984Z] <<< [apiv2][body] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] +  database: rules syntax for database meuperfil-b964d-default-rtdb is valid 
+[debug] [2023-11-14T15:47:21.994Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions [none]
+[debug] [2023-11-14T15:47:21.995Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-11-14T15:47:23.513Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions 200
+[debug] [2023-11-14T15:47:23.513Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions {"name":"projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[meuperfil-b964d]: beginning deploy... 
+[info] i  hosting[meuperfil-b964d]: found 4 files in public 
+[debug] [2023-11-14T15:47:23.524Z] [hosting] uploading with 200 concurrency
+[debug] [2023-11-14T15:47:23.530Z] [hosting] hash cache [cHVibGlj] stored for 4 files
+[debug] [2023-11-14T15:47:23.531Z] [hosting][hash queue][FINAL] {"max":1,"min":0,"avg":0,"active":0,"complete":4,"success":4,"errored":0,"retried":0,"total":4,"elapsed":4}
+[debug] [2023-11-14T15:47:23.532Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473:populateFiles [none]
+[debug] [2023-11-14T15:47:23.532Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473:populateFiles {"files":{"/index.html":"e87f0cc05e530293bc14052082342a74e12cad23e700ccefef00cdb59375b9d4","/manifest.json":"aff3449bdc238776f5d6d967f19ec491b36aed5fb7f23ccff6500736fd58494a","/robots.txt":"bfe106a3fb878dc83461c86818bf74fc1bdc7f28538ba613cd3e775516ce8b49","/sitetitle.png":"a29c22706d5e7e5ea1f871dca7a50b5f9f0334a604a7142140ce8ef24da7ecfb"}}
+[debug] [2023-11-14T15:47:24.673Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473:populateFiles 200
+[debug] [2023-11-14T15:47:24.673Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/meuperfil-b964d/versions/377dbb7b0d499473/files"}
+[debug] [2023-11-14T15:47:24.675Z] [hosting][populate queue][FINAL] {"max":1147,"min":1147,"avg":1147,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1147}
+[debug] [2023-11-14T15:47:24.675Z] [hosting] uploads queued: 0
+[debug] [2023-11-14T15:47:24.676Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1699976844676}
+[info] i  hosting: upload complete 
+[info] +  hosting[meuperfil-b964d]: file upload complete 
+[debug] [2023-11-14T15:47:24.678Z] [hosting] deploy completed after 1161ms
+[info] i  database: releasing rules... 
+[debug] [2023-11-14T15:47:24.679Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/meuperfil-b964d/locations/-/instances/meuperfil-b964d-default-rtdb [none]
+[debug] [2023-11-14T15:47:25.604Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/meuperfil-b964d/locations/-/instances/meuperfil-b964d-default-rtdb 200
+[debug] [2023-11-14T15:47:25.604Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/meuperfil-b964d/locations/-/instances/meuperfil-b964d-default-rtdb {"name":"projects/811677734300/locations/us-central1/instances/meuperfil-b964d-default-rtdb","project":"projects/811677734300","databaseUrl":"https://meuperfil-b964d-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2023-11-14T15:47:25.608Z] >>> [apiv2][query] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json 
+[debug] [2023-11-14T15:47:25.609Z] >>> [apiv2][body] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json "{\n  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */\n  \"rules\": {\n    \".read\": false,\n    \".write\": false\n  }\n}"
+[debug] [2023-11-14T15:47:26.029Z] <<< [apiv2][status] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2023-11-14T15:47:26.029Z] <<< [apiv2][body] PUT https://meuperfil-b964d-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] +  database: rules for database meuperfil-b964d-default-rtdb released successfully 
+[debug] [2023-11-14T15:47:26.032Z] [
+  {
+    "config": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "meuperfil-b964d"
+    },
+    "version": "projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473"
+  }
+]
+[info] i  hosting[meuperfil-b964d]: finalizing version... 
+[debug] [2023-11-14T15:47:26.035Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions/377dbb7b0d499473 updateMask=status%2Cconfig
+[debug] [2023-11-14T15:47:26.035Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions/377dbb7b0d499473 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2023-11-14T15:47:27.322Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions/377dbb7b0d499473 200
+[debug] [2023-11-14T15:47:27.323Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/versions/377dbb7b0d499473 {"name":"projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-14T15:47:24.196009Z","createUser":{"email":"william100william@gmail.com"},"finalizeTime":"2023-11-14T15:47:28.413058Z","finalizeUser":{"email":"william100william@gmail.com"}}
+[debug] [2023-11-14T15:47:27.325Z] [hosting] finalized version for meuperfil-b964d:[object Object]
+[info] +  hosting[meuperfil-b964d]: version finalized 
+[info] i  hosting[meuperfil-b964d]: releasing new version... 
+[debug] [2023-11-14T15:47:27.327Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/channels/live/releases versionName=projects%2F811677734300%2Fsites%2Fmeuperfil-b964d%2Fversions%2F377dbb7b0d499473
+[debug] [2023-11-14T15:47:27.327Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/channels/live/releases {}
+[debug] [2023-11-14T15:47:28.709Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/channels/live/releases 200
+[debug] [2023-11-14T15:47:28.710Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/meuperfil-b964d/channels/live/releases {"name":"projects/811677734300/sites/meuperfil-b964d/channels/live/releases/1699976849124000","version":{"name":"projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-14T15:47:24.196009Z","createUser":{"email":"william100william@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJEDa-nlqYRMGBnDbSp0zO_Bz03GJgyevw3291BM3IPfzQ"},"finalizeTime":"2023-11-14T15:47:28.413058Z","finalizeUser":{"email":"william100william@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJEDa-nlqYRMGBnDbSp0zO_Bz03GJgyevw3291BM3IPfzQ"}},"type":"DEPLOY","releaseTime":"2023-11-14T15:47:29.124Z","releaseUser":{"email":"william100william@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJEDa-nlqYRMGBnDbSp0zO_Bz03GJgyevw3291BM3IPfzQ"}}
+[debug] [2023-11-14T15:47:28.712Z] [hosting] release: {"name":"projects/811677734300/sites/meuperfil-b964d/channels/live/releases/1699976849124000","version":{"name":"projects/811677734300/sites/meuperfil-b964d/versions/377dbb7b0d499473","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-14T15:47:24.196009Z","createUser":{"email":"william100william@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJEDa-nlqYRMGBnDbSp0zO_Bz03GJgyevw3291BM3IPfzQ"},"finalizeTime":"2023-11-14T15:47:28.413058Z","finalizeUser":{"email":"william100william@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJEDa-nlqYRMGBnDbSp0zO_Bz03GJgyevw3291BM3IPfzQ"}},"type":"DEPLOY","releaseTime":"2023-11-14T15:47:29.124Z","releaseUser":{"email":"william100william@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJEDa-nlqYRMGBnDbSp0zO_Bz03GJgyevw3291BM3IPfzQ"}}
+[info] +  hosting[meuperfil-b964d]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/meuperfil-b964d/overview
+[info] Hosting URL: https://meuperfil-b964d.web.app
