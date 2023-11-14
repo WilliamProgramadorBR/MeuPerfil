@@ -16,7 +16,9 @@ const MeuCurriculo = () => {
       <div>
         <TextoContainer>
           <h2>Educação</h2>
-          <p>Nome da Instituição - Grau Obtido - Ano de Conclusão</p>
+          <p>Sou formado na instituição Estácio de Sá, o ano da minha conclusão foi em 2023.</p>
+          <p>Formado em Analise e desenvolvemento de sistemas</p>
+          <p>Quero continuar meus estudos, meu sonho é consegui mestrado nas áreas de tecnologias</p>
         </TextoContainer>
       </div>
     ),
@@ -24,16 +26,9 @@ const MeuCurriculo = () => {
       <div>
         <TextoContainer>
           <h2>Experiência Profissional</h2>
-          <p>Meu principal objetivo é iniciar minha
-            carreira como desenvolvedor full stack,
-            demonstrando minha paixão pela
-            programação e aprimorando minhas
-            habilidades em tecnologias específicas
-            para me tornar um desenvolvedor
-            completo, capaz de contribuir em
-            diversos aspectos do desenvolvimento
-            de software.
-          </p>
+          <p>Meu objetivo profissional, é consegui usar o meu conhecimento para desenvolvemento profissional e pessoal, conhecer outros Devs e profissionais de tecnologias até outros setores,
+          adquirir conhecimentos junstos e elaborar bons projetos de alta escalabilidad</p>
+          
         </TextoContainer>
       </div>
     ),
