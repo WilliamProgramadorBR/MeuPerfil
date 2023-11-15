@@ -55,7 +55,7 @@ export const Titulo = styled.h1`
   margin: 0;
   font-weight: bold;
   font-family: 'Roboto', sans-serif; /* Substitua 'Roboto' pelo nome da fonte escolhida */
-  color: #555;
+  color: #blue;
   margin-top: 200px;
   transition: color 0.3s ease;
   cursor: pointer;
@@ -66,7 +66,10 @@ export const Titulo = styled.h1`
   }
 `;
 
-
+export const LinkedInLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+`;
 
 export const FotoRedonda = styled.img`
   width: 200px;
@@ -98,11 +101,16 @@ export const BotaoNavegacao2 = styled.button`
   padding: 0;
   outline: none;
 `;
-
+export const Paragrafo = styled.p`
+  margin-bottom: 20px;
+  overflow-wrap: break-word;
+  font-family: 'SuaFonte', sans-serif; 
+`;
 export const TextoContainer = styled.div`
   max-width: 800px;
   margin-top: 20px;
   padding: 20px;
+  overflow-wrap: break-word;
   font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
@@ -131,8 +139,8 @@ export const TextoContainer = styled.div`
 
 export const theme = {
   light: {
-    background: '#fff',
-    text: '#333',
+    background: 'rgb(255, 213, 0)',
+    text: 'black',
   },
   dark: {
     background: '#333',
