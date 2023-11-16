@@ -9,7 +9,7 @@ const SidebarContainer = styled.div`
   left: ${({ isOpen }) => (isOpen ? '0' : '-300px')};
   width: 300px;
   height: 100%;
-  background-color: #333;
+  background-color: black;
   padding-top: 60px;
   transition: left 0.3s ease;
   color: #fff;
@@ -48,6 +48,10 @@ const Sidebar = ({ isOpen, onClose }) => {
       <MenuItem to="/">Home</MenuItem>
       <MenuItem to="/tecnologias">Tecnologias</MenuItem>
       <MenuItem to="/projetos">Projetos</MenuItem>
+      <MenuItem to="https://github.com/WilliamProgramadorBR/Hello_django" target="_blank">Projeto Django 👨🏿‍💻</MenuItem>
+      <MenuItem to="https://github.com/WilliamProgramadorBR/Sistema-Help-desk" target="_blank">Projeto HelpDesk C# 👨🏿‍💻</MenuItem>
+      <MenuItem to="https://github.com/Rennan-Pessanha/Site-Helpdesk" target="_blank">Todos os Devs e amigos,Projeto HD </MenuItem>
+
       {/* Adicione mais links conforme necessário */}
     </SidebarContainer>
   );

@@ -22,7 +22,7 @@ const ProjetoDescricao = styled.p`
 
 const Projeto = ({ imagem, titulo, descricao }) => (
   <ProjetoContainer>
-    <ProjetoImagem src={imagem} alt={titulo} />
+    
     <ProjetoTitulo>{titulo}</ProjetoTitulo>
     <ProjetoDescricao>{descricao}</ProjetoDescricao>
   </ProjetoContainer>

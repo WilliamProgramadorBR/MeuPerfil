@@ -1,15 +1,14 @@
-// GlobalStyles.js
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
-  // Outros estilos...
 
+export const GlobalStyles = createGlobalStyle`
   body {
-    background-color: ${(props) => (props.theme === 'light' ? '#fff' : '#333')};
-    color: ${(props) => (props.theme === 'light' ? '#333' : '#fff')};
+    margin: 0;
+    padding: 0;
+    background-color: ${({ theme }) => theme.background}; /* Adicione isso para definir a cor de fundo do corpo */
+    color: ${({ theme }) => theme.text};
+    font-family: 'Arial', sans-serif;
   }
-
-  // Mais estilos...
 `;
 
 export default GlobalStyles;

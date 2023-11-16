@@ -1,7 +1,8 @@
+// TecnologiaChart.js
 import React, { useEffect, useRef } from 'react';
 import 'chart.js';
 
-const TecnologiaChart = ({ dados }) => {
+const TecnologiaChart = ({ dados, onChartClick }) => {
   const canvasRef = useRef();
   let chart = null;
 
@@ -21,37 +22,21 @@ const TecnologiaChart = ({ dados }) => {
         datasets: [
           {
             data: dados.map((tecnologia) => tecnologia.percentual),
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800'],
-            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800'],
+            backgroundColor: ['#FF6384', '#36A2EB', '#d3d3d3', '#4CAF50', '#FF9800','#993399'],
+            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#d3d3d3', '#4CAF50', '#FF9800','#993399'],
           },
         ],
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true, // Manter a proporção de aspecto padrão
-        aspectRatio: false, // Pode ajustar conforme necessário
-        tooltips: {
-          callbacks: {
-            title: (tooltipItem, data) => {
-              // Use o índice do tooltipItem para obter o nome da tecnologia correspondente
-              const index = tooltipItem[0].index;
-              return dados[index].nome;
-            },
-            label: (tooltipItem, data) => {
-              // Use o índice do tooltipItem para obter o percentual da tecnologia correspondente
-              const index = tooltipItem.index;
-              return `Percentual: ${dados[index].percentual}%`;
-            },
-          },
-        },
-        legend: {
-          onClick: null, // Remova a função de clique padrão
-        },
-        onClick: (e, legendItem) => {
-          // Use o objeto 'legendItem' para obter informações sobre a legenda clicada
-          if (legendItem && legendItem.text) {
-            const index = chart.data.labels.indexOf(legendItem.text);
-            alert(`Clicou na legenda de ${dados[index].nome}`);
+        maintainAspectRatio: true,
+        aspectRatio: 3,
+        onClick: (event, elements) => {
+          // Verifique se há elementos clicados
+          if (elements && elements.length > 0) {
+            const clickedIndex = elements[0].index;
+            const clickedTecnologia = dados[clickedIndex];
+            onChartClick(clickedTecnologia);
           }
         },
       },
@@ -62,20 +47,9 @@ const TecnologiaChart = ({ dados }) => {
         chart.destroy();
       }
     };
-  }, [dados]);
+  }, [dados, onChartClick]);
 
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '70vh', // Altura mínima da visualização
-      }}
-    >
-      <canvas ref={canvasRef} />
-    </div>
-  );
+  return <canvas ref={canvasRef} />;
 };
 
 export default TecnologiaChart;

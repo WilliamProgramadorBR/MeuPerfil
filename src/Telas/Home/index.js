@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CurriculoContainer, Titulo, BotoesContainer, BotaoNavegacao1, BotaoNavegacao2, FotoRedonda, TextoContainer, theme, GlobalStyles, FooterContainer, ThemeToggle, ButtonContainer, Paragrafo, LinkedInLink } from './HomeStyles';
+import { CurriculoContainer, Titulo, BotoesContainer, BotaoNavegacao1, BotaoNavegacao2, FotoRedonda, TextoContainer, theme, GlobalStyles, FooterContainer, ThemeToggle, ButtonContainer, Paragrafo, LinkedInLink, TwoColumnContainer, Column, StyledDiv } from './HomeStyles';
 import suaFoto from '../../Fotos/1694574063587.jpeg';import solgif from '../../Fotos/solgif.gif'; import luagif from '../../Fotos/luagif.gif';import setadireita from '../../Fotos/proximodireito.gif';
 import { ThemeProvider } from 'styled-components';
 import Layout from '../../Componentes/menu-lateral/Layout';
@@ -12,10 +12,13 @@ const MeuCurriculo = () => {
   const toggleTheme = () => {
     setCurrentTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
+ 
 
   const conteudos = [
     (
-      <div>
+      <StyledDiv>
+        <TwoColumnContainer>
+        <Column>
         <TextoContainer>
           <h2>Educação 👨🏾‍💻</h2>
           <Paragrafo>Sou formado na instituição Estácio de Sá, o ano da minha conclusão foi em 2023.</Paragrafo>
@@ -25,10 +28,14 @@ const MeuCurriculo = () => {
            </Paragrafo>
           <Paragrafo>Quero continuar meus estudos, meu sonho é consegui mestrado nas áreas de tecnologias, sempre colocando em mente que a prática leva a perfeição</Paragrafo>
         </TextoContainer>
-      </div>
+        </Column>
+        </TwoColumnContainer>
+      </StyledDiv>
     ),
     (
-      <div>
+      <StyledDiv>
+        <TwoColumnContainer>
+        <Column>
         <TextoContainer>
           <h2>Experiência Profissional</h2>
           <Paragrafo>(<strong>ESTÁGIARIO HELPDESK</strong>)Buscando áreas mais próximas ao setor de desenvolvimento, a empresa MEDGRUPO abriu as suas portas. Logo não recursei a oportunidade de fazer parte de uma grande equipe, de HelpDesk, atuando em atendimentos diretos aos clientes(Alunos de medicina) o objetivo era lidar com dúvidas, sugestões e até bugs que podiam impactar nos estudos dos alunos. Sempre buscando a excelência, no setor aprendi sobre como funciona a RAD de um App em prática, fazendo testes em homologação e produção, testando diversos cenários e reportando erros para os Devs. Fiquei muito empolgado de ver os anos de estudo em prática, logo percebi que o mundo da tecnologia é vasto e tinha muito que aprender.</Paragrafo>
@@ -39,10 +46,14 @@ const MeuCurriculo = () => {
           <Paragrafo>Atuando com atendimentos diretos, consegui aprimorar também meus conhecimentos em planilhas, logo pensei em unificar javascript utilizando a planilha como um banco de dados, foi uma ótima ideia. Com esses conhecimentos unificados, consegui criar planilhas inteligentes que conseguiam enviar e-mails em massas para outros colaboradores, notificando sobre tratativas e demais informações necessárias para atuação no setor.</Paragrafo>
           
         </TextoContainer>
-      </div>
+        </Column>
+        </TwoColumnContainer>
+      </StyledDiv>
     ),
     (
-      <div>
+      <StyledDiv>
+        <TwoColumnContainer>
+          <Column>
         <TextoContainer>
           <h2>Minhas habilidades😉</h2>
           <ul>
@@ -63,19 +74,27 @@ const MeuCurriculo = () => {
             </li>
           </ul>
         </TextoContainer>
-      </div>
+        </Column>
+        </TwoColumnContainer>
+      </StyledDiv>
     ),
     (
-      <div>
+      <StyledDiv>
+        <TwoColumnContainer>
+        <Column>
         <TextoContainer>
-          <h2>Meu contato 📱😉</h2>
+          <h2>Meu contato 📱🤙🏿</h2>
           <Paragrafo>william100william@gmail.com</Paragrafo>
           <Paragrafo>Numero celular: 21981695297</Paragrafo>
           <Paragrafo>Caso se algumas das apis abaixos não funcione do jeito correto, essas informações não poderiam faltar, né. 🤗 </Paragrafo>
         </TextoContainer>
-      </div>
+        </Column>
+        </TwoColumnContainer>
+      </StyledDiv>
       
-    ),(<div>
+    ),(<StyledDiv>
+      <TwoColumnContainer>
+        <Column>
       <TextoContainer>
         <h2>Um pouco sobre mim: 💪🏿😉</h2>
         <Paragrafo>Nascido na cidade do Rio de janeiro, criado na bahia de sepetiba, meu sonho desde novo era ser jogador de futebol, talvez mais porque meu pai queria que eu fosse haha!
@@ -86,7 +105,9 @@ const MeuCurriculo = () => {
         <Paragrafo>Quero agradecer a todos que dedicaram seu tempo, lendo o conteúdo desse simples site. Espero encontra-los vocês por ai, um abraço e permaneço a disposição</Paragrafo>
         
       </TextoContainer>
-    </div>)
+      </Column>
+      </TwoColumnContainer>
+    </StyledDiv>)
   ];
  
     const dadosTecnologia = [
@@ -132,8 +153,8 @@ const MeuCurriculo = () => {
           <BotaoNavegacao2 onClick={handleProximo} disabled={conteudoAtual === conteudos.length - 1}>Próximo ➡️</BotaoNavegacao2>
         </BotoesContainer>
         {conteudos[conteudoAtual]}
-        <Paragrafo>Em uma numeração de 0 a 100, logo abaixo estão as minhas especiliadedes</Paragrafo>
-        <TecnologiaChart dados={dadosTecnologia} />
+        
+        
       </CurriculoContainer>
       <FooterContainer>
         {/* Adicione conteúdo ao seu rodapé conforme necessário */}

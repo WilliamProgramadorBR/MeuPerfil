@@ -104,14 +104,14 @@ export const BotaoNavegacao2 = styled.button`
 export const Paragrafo = styled.p`
   margin-bottom: 20px;
   overflow-wrap: break-word;
-  font-family: 'SuaFonte', sans-serif; 
+  font-family: 'Roboto', sans-serif;
 `;
 export const TextoContainer = styled.div`
   max-width: 800px;
   margin-top: 20px;
   padding: 20px;
   overflow-wrap: break-word;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,7 +171,34 @@ export const ThemeToggle = styled.button`
   outline: none;
 `;
 
+export const TwoColumnContainer = styled.div`
+display: flex;
+gap: 20px; /* Adiciona um espaçamento entre as colunas */
+`;
 
+export const Column = styled.div`
+flex: 1; /* As colunas ocuparão a mesma largura */
+`;
+
+const pulse = keyframes`
+  0% {
+    border-color: #333;
+  }
+  50% {
+    border-color: #ff0000; /* Cor da borda na metade da animação */
+  }
+  100% {
+    border-color: #333;
+  }
+`;
+
+export const StyledDiv = styled.div`
+  border: 2px solid #333;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: ${pulse} 2s infinite; /* Adiciona a animação à borda por 2 segundos, repetindo infinitamente */
+`;
 // Se você estiver usando Styled Components, adicione ao seu arquivo HomeStyles.js
 
 
