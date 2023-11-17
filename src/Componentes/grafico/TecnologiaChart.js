@@ -30,7 +30,7 @@ const TecnologiaChart = ({ dados, onChartClick }) => {
       options: {
         responsive: true,
         maintainAspectRatio: true,
-        aspectRatio: 3,
+        aspectRatio: 2,
         onClick: (event, elements) => {
           // Verifique se há elementos clicados
           if (elements && elements.length > 0) {

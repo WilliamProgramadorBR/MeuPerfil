@@ -14,27 +14,34 @@ const GlobalStyle = createGlobalStyle`
     margin: 0; /* Remove as margens padrão do body */
     padding: 0; /* Remove os preenchimentos padrão do body */
     
-    
 
   }
 `;
+/* Estilos para telas menores que 768 pixels de largura */
+
 
 const TecnologiaContainer = styled.div`
-  height: 150vh;
+  height: 120%;
   display: flex;
-  width: 90%;
+  width: 80%;
   margin-left: 10%;
-  margin-top: 20%;
   flex-direction: column;
+  margin-top: -5%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px; /* Adicione um espaçamento na parte inferior para evitar a sobreposição do footer */
+  margin-bottom: 10%; /* Adicione um espaçamento na parte inferior para evitar a sobreposição do footer */
+  
+
+  @media (max-width: 400px) {
+    width: 100%; /* Ajuste para ocupar 100% da largura em telas menores que 401px */
+    margin: 2%; /* Redução da margem para telas menores que 401px */
+  }
 `;
 
 const TituloPrincipal = styled.h2`
-  font-size: 20px;
+  font-size: 100%;
   font-weight: bold;
-  margin-top: 200px;
+  margin-top: 20%;
   color: #333; 
   font-family: 'Agbalumo', sans-serif; 
 `;
@@ -47,6 +54,16 @@ const estiloTexto = {
 const StyledImage = styled.img`
   width: 30%; /* Ajuste o tamanho conforme necessário */
   height: auto; /* Isso garante que a proporção seja mantida */
+`;
+
+const PorcentagemWidth = styled.div`
+  width: 50%; /* 50% da largura do contêiner pai */
+  margin: 5%; /* 5% do tamanho do contêiner pai em todas as direções */
+
+  @media (max-width: 768px) {
+    width: 100%; /* Ajuste para ocupar 100% da largura em telas menores */
+    margin: 2%; /* Redução da margem para telas menores */
+  }
 `;
 //Areas dos textos
 const NodeBack = 'Tenho um carinho por desenvolver back-ends em Node. Claro que procuro aprender outros métodos de desenvolver back-ends. No momento, estou aprendendo C# e já desenvolvi pequenos back-ends em Typescript. No entanto, busco sempre ser muito bom em uma única linguagem, suas bibliotecas e recursos, ao invés de aprender diversas e não conseguir dominar o básico. Resumindo, meus conhecimentos em Node.js são uma tecnologia à qual já tenho afinidade. Consigo desenvolver coisas mais robustas e, quando enfrento dificuldades com algumas lógicas, sei pesquisar e ler a documentação. É importante entender suas dúvidas para encontrar as melhores respostas! 🧐'
@@ -91,7 +108,9 @@ const Tecnologia = () => {
           <TituloPrincipal>
             Em um percentual de 200 como valor total, tentei transmitir em um gráfico, meus campos de atuação, não todos, porém os principais. Por favor, clique no gráfico para conseguir visualizar mais informação de cada área.
           </TituloPrincipal>
+          
           <br />
+          
           <StyledImage src={setaparabaixo} alt='Clique no gráfico para mais informação' />
           <TecnologiaChart dados={dadosTecnologia} onChartClick={handleChartClick} />
 

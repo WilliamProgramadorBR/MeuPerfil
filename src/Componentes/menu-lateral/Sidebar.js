@@ -1,7 +1,8 @@
 // Sidebar.js
-import React from 'react';
+
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const SidebarContainer = styled.div`
   position: fixed;
@@ -40,18 +41,110 @@ const MenuItem = styled(Link)`
     background-color: #555;
   }
 `;
+const MenuItemWithSubMenu = styled(MenuItem)`
+  position: relative;
+
+  &:hover {
+    background-color: #555;
+
+    ul {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const SubMenu = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: auto; /* Corrigir para 'auto' */
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+`;
+
+
+const SubMenuItem = styled.li`
+  padding: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+
+
+const StyledLink = styled(Link)`
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+const StyledExternalLink = styled.a`
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+// ...
+
+<SubMenuItem>
+  <StyledLink to="caminho/do/perfil/william">William Oliveira - Fullstack Node.js Banco de dados</StyledLink>
+</SubMenuItem>
+
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+  const handleSubMenuToggle = () => {
+    setIsSubMenuOpen(!isSubMenuOpen);
+  };
+
   return (
     <SidebarContainer isOpen={isOpen}>
       <CloseButton onClick={onClose}>&times;</CloseButton>
-      <MenuItem to="/">Home</MenuItem>
-      <MenuItem to="/tecnologias">Tecnologias</MenuItem>
-      <MenuItem to="/projetos">Projetos</MenuItem>
       <MenuItem to="https://github.com/WilliamProgramadorBR/Hello_django" target="_blank">Projeto Django 👨🏿‍💻</MenuItem>
       <MenuItem to="https://github.com/WilliamProgramadorBR/Sistema-Help-desk" target="_blank">Projeto HelpDesk C# 👨🏿‍💻</MenuItem>
-      <MenuItem to="https://github.com/Rennan-Pessanha/Site-Helpdesk" target="_blank">Todos os Devs e amigos,Projeto HD </MenuItem>
-
+      <MenuItem to="https://github.com/Rennan-Pessanha/Site-Helpdesk/graphs/contributors" target="_blank">Todos os Devs e amigos,Projeto HD </MenuItem>
+      <MenuItemWithSubMenu onClick={handleSubMenuToggle}>
+        Navegação pelo site
+        <SubMenu>
+  
+  <SubMenuItem>
+    <StyledLink to="/">Página inicial</StyledLink>
+  </SubMenuItem>
+  <SubMenuItem>
+    <StyledLink to="/tecnologias">Sobre tecnlogias e campo de atuação</StyledLink>
+  </SubMenuItem>
+  <SubMenuItem>
+    <StyledLink to="/Projetos">Meus projetos</StyledLink>
+  </SubMenuItem>
+</SubMenu>
+      </MenuItemWithSubMenu>
+      
       {/* Adicione mais links conforme necessário */}
     </SidebarContainer>
   );

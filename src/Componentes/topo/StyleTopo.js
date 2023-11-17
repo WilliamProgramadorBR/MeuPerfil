@@ -2,7 +2,12 @@ import styled from 'styled-components';
 
 export const BannerStyle = styled.div`
 width: 100%;
+max-width: 100%; /* Garante que o contêiner não ultrapasse a largura máxima da tela */
 height: 100px; /* Ajuste a altura conforme necessário */
+
+@media (max-width: 768px) {
+  height: 50px; /* Ajuste a altura para telas menores */
+}
 `;
 
 
