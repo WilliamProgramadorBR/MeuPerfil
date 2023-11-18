@@ -12,8 +12,15 @@ const ProjetosContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 150vh; /* Define a altura total da tela */
+  padding: 20%; /* Adicione algum preenchimento para espaçamento */
+  height: auto; /* Permite que a altura seja determinada pelo conteúdo */
+
+  @media (max-width: 768px) {
+    padding: 20%; /* Reduza o preenchimento para telas menores */
+    height: 100%; /* Permite que a altura seja determinada pelo conteúdo em telas menores */
+  }
 `;
+
 const GlobalStyle = createGlobalStyle`
   body {
     background-color:rgb(255, 213, 0); /* Código de cor para amarelo mostarda */

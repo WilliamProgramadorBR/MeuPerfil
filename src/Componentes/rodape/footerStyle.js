@@ -13,7 +13,8 @@ export const FooterContainer = styled.footer`
   align-items: center;
 
   @media (max-width: 300px) {
-    flex-direction: column; /* Altera para uma coluna quando a largura da tela é menor ou igual a 300 pixels */
+    flex-direction: center;
+    align-items: center; /* Altera para uma coluna quando a largura da tela é menor ou igual a 300 pixels */
   }
 `;
 
