@@ -142,6 +142,9 @@ const Sidebar = ({ isOpen, onClose }) => {
   <SubMenuItem>
     <StyledLink to="/Projetos">Meus projetos</StyledLink>
   </SubMenuItem>
+  <SubMenuItem>
+    <StyledLink to="/Certificados">Meus certificados</StyledLink>
+  </SubMenuItem>
 </SubMenu>
       </MenuItemWithSubMenu>
       
