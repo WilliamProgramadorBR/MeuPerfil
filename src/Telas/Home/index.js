@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CurriculoContainer, Titulo, BotoesContainer, BotaoNavegacao1, BotaoNavegacao2, FotoRedonda, TextoContainer, theme, GlobalStyles, FooterContainer, ThemeToggle, ButtonContainer, Paragrafo, LinkedInLink, TwoColumnContainer, Column, StyledDiv } from './HomeStyles';
-import suaFoto from '../../Fotos/1694574063587.jpeg';import solgif from '../../Fotos/solgif.gif'; import luagif from '../../Fotos/luagif.gif';import setadireita from '../../Fotos/proximodireito.gif';
+import suaFoto from '../../Fotos/1694574063587.jpg';import solgif from '../../Fotos/solgif.gif'; import luagif from '../../Fotos/luagif.gif';import setadireita from '../../Fotos/proximodireito.gif';
 import { ThemeProvider } from 'styled-components';
 import Layout from '../../Componentes/menu-lateral/Layout';
 import TecnologiaChart from '../../Componentes/grafico/TecnologiaChart';
@@ -13,10 +13,18 @@ const MeuCurriculo = () => {
     setCurrentTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
  
+  const [mostrarAlerta, setMostrarAlerta] = useState(true);
 
+  useEffect(() => {
+    if (mostrarAlerta) {
+      alert("Esta página ainda está em desenvolvimento. Peço desculpas por eventuais bugs. Vale ressaltar que meu foco principal é no desenvolvimento backend, e por isso a parte de estilização no frontend pode apresentar algumas dificuldades. Agradeço pela compreensão!");
+
+    }
+  }, [mostrarAlerta]);
   const conteudos = [
     (
       <StyledDiv>
+
         <TwoColumnContainer>
         <Column>
         <TextoContainer>
