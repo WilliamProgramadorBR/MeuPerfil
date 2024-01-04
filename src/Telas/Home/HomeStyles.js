@@ -68,6 +68,16 @@ export const FotoRedonda = styled.img`
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid red;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9); /* Reduz um pouco a escala ao clicar para dar feedback visual de clique */
+  }
 `;
 
 export const BotoesContainer = styled.div`

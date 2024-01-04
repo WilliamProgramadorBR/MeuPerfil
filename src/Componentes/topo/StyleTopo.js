@@ -12,8 +12,9 @@ height: 100px; /* Ajuste a altura conforme necessário */
 
 
 export const BannerImage = styled.img`
-  width: 100%; /* Define a largura para 100% do contêiner pai */
-  height: 300%; /* Mantém a proporção da imagem */
+  width: 80%; /* Define a largura para 100% do contêiner pai */
+  height: 300%;
+  margin-left: 9%; /* Mantém a proporção da imagem */
 `;
 
 //export const GlobalStyle = createGlobalStyle`
