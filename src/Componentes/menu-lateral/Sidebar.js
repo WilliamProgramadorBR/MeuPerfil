@@ -1,8 +1,10 @@
 // Sidebar.js
 
-import styled from 'styled-components';
+
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+
+import styled  from 'styled-components';
 
 const SidebarContainer = styled.div`
   position: fixed;
@@ -116,15 +118,17 @@ const StyledExternalLink = styled.a`
 </SubMenuItem>
 
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = ({ isOpen, onClose, toggleTheme, currentTheme }) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
   const handleSubMenuToggle = () => {
     setIsSubMenuOpen(!isSubMenuOpen);
   };
-
   return (
+    
     <SidebarContainer isOpen={isOpen}>
+       
+      <toggleTheme/>
       <CloseButton onClick={onClose}>&times;</CloseButton>
       <MenuItem to="https://github.com/WilliamProgramadorBR/Hello_django" target="_blank">Projeto Django 👨🏿‍💻</MenuItem>
       <MenuItem to="https://github.com/WilliamProgramadorBR/CursoC-Estudos" target="_blank">Meus conhecimentos em C# 👨🏿‍💻</MenuItem>
@@ -146,11 +150,13 @@ const Sidebar = ({ isOpen, onClose }) => {
   <SubMenuItem>
     <StyledLink to="/Certificados">Meus certificados</StyledLink>
   </SubMenuItem>
+  
 </SubMenu>
       </MenuItemWithSubMenu>
       
       {/* Adicione mais links conforme necessário */}
     </SidebarContainer>
+   
   );
 };
 

@@ -1,7 +1,7 @@
 // HomeStyles.js
 
 
-import styled, { createGlobalStyle,keyframes } from 'styled-components';
+import styled, {keyframes } from 'styled-components';
 
 
 export const ButtonContainer = styled.div`
@@ -9,15 +9,7 @@ export const ButtonContainer = styled.div`
   top: 300px; /* Ajuste a distância do topo conforme necessário */
   right: 10px; /* Ajuste a distância da direita conforme necessário */
 `;
-export const GlobalStyles = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: ${({ theme }) => theme.background}; /* Adicione isso para definir a cor de fundo do corpo */
-    color: ${({ theme }) => theme.text};
-    font-family: 'Arial', sans-serif;
-  }
-`;
+
 
 export const CurriculoContainer = styled.div`
   max-width: 800px;
@@ -91,6 +83,10 @@ export const BotaoNavegacao1 = styled.button`
   cursor: pointer;
   padding: 0;
   outline: none;
+  padding: 8px 12px;
+  color: #333;
+  transition: color 0.3s ease;
+
 `;
 
 export const BotaoNavegacao2 = styled.button`
@@ -137,16 +133,7 @@ export const TextoContainer = styled.div`
   }
 `;
 
-export const theme = {
-  light: {
-    background: 'rgb(255, 213, 0)',
-    text: 'black',
-  },
-  dark: {
-    background: '#333',
-    text: '#fff',
-  },
-};
+
 
 export const FooterContainer = styled.footer`
   background-color: ${({ theme }) => theme.background};
@@ -167,6 +154,8 @@ export const ThemeToggle = styled.button`
   color: ${({ theme }) => theme.background};
   border: none;
   padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
   cursor: pointer;
   outline: none;
 `;

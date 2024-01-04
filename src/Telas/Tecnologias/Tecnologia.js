@@ -1,22 +1,15 @@
 // Tecnologia.js
-import React, { useState } from 'react';
+
 import TecnologiaChart from '../../Componentes/grafico/TecnologiaChart';
 import Layout from '../../Componentes/menu-lateral/Layout';
-import styled,{ThemeProvider, createGlobalStyle} from 'styled-components';
-import { GlobalStyles, ThemeToggle, theme,  } from '../Home/HomeStyles';
+import styled,{ createGlobalStyle} from 'styled-components';
+import {GlobalStyles} from'./../../Componentes/mododarkin/StyledWebsite'
+
 import setaparabaixo from '../../Fotos/setaparabaixo.gif';
 import loading from '../../Fotos/loading.gif';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color:rgb(255, 213, 0); /* Código de cor para amarelo mostarda */
-    margin: 0; /* Remove as margens padrão do body */
-    padding: 0; /* Remove os preenchimentos padrão do body */
-    
 
-  }
-`;
 /* Estilos para telas menores que 768 pixels de largura */
 
 
@@ -57,8 +50,8 @@ const StyledImage = styled.img`
 `;
 
 const PorcentagemWidth = styled.div`
-  width: 50%; /* 50% da largura do contêiner pai */
-  margin: 5%; /* 5% do tamanho do contêiner pai em todas as direções */
+  width: 50%; 
+  margin: 5%; 
 
   @media (max-width: 768px) {
     width: 100%; /* Ajuste para ocupar 100% da largura em telas menores */
@@ -102,7 +95,7 @@ const Tecnologia = () => {
   }, []);
   return (
     <Layout>
-      <GlobalStyle />
+      <GlobalStyles/>
       {dadosCarregados ? (
         <TecnologiaContainer>
           <TituloPrincipal>

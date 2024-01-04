@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { CurriculoContainer, Titulo, BotoesContainer, BotaoNavegacao1, BotaoNavegacao2, FotoRedonda, TextoContainer, theme, GlobalStyles, FooterContainer, ThemeToggle, ButtonContainer, Paragrafo, LinkedInLink, TwoColumnContainer, Column, StyledDiv } from './HomeStyles';
+import { CurriculoContainer, Titulo, BotoesContainer, BotaoNavegacao1, BotaoNavegacao2, FotoRedonda, TextoContainer, theme, FooterContainer, ThemeToggle, ButtonContainer, Paragrafo, LinkedInLink, TwoColumnContainer, Column, StyledDiv } from './HomeStyles';
 import suaFoto from '../../Fotos/1694574063587.jpg';import solgif from '../../Fotos/solgif.gif'; import luagif from '../../Fotos/luagif.gif';import setadireita from '../../Fotos/proximodireito.gif';
-import { ThemeProvider } from 'styled-components';
+
 import Layout from '../../Componentes/menu-lateral/Layout';
-import TecnologiaChart from '../../Componentes/grafico/TecnologiaChart';
+import {GlobalStyles} from'./../../Componentes/mododarkin/StyledWebsite'
+
 
 const MeuCurriculo = () => {
   const [conteudoAtual, setConteudoAtual] = useState(1);
-  const [currentTheme, setCurrentTheme] = useState('light');
+ 
 
-  const toggleTheme = () => {
-    setCurrentTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+ 
  
   const [mostrarAlerta, setMostrarAlerta] = useState(true);
 
@@ -141,35 +140,34 @@ const MeuCurriculo = () => {
 
   return (
     <Layout>
-    <ThemeProvider theme={theme[currentTheme]}>
-      <GlobalStyles />
-      <CurriculoContainer>
-      <ButtonContainer><button onClick={toggleTheme}>
-  <img
-     src={currentTheme === 'light' ? solgif : luagif}
-     alt={currentTheme === 'light' ? 'Alternar para Modo Escuro' : 'Alternar para Modo Claro'}
-    style={{ width: '30px', height: '30px' }} // Ajuste o tamanho conforme necessário
-  /></button>
-</ButtonContainer>
-
-
-      <Titulo onClick={handleNomeClick}>William Oliveira</Titulo>
-   
-        <FotoRedonda src={suaFoto} alt="Sua Foto" />
-        <BotoesContainer>
-          <BotaoNavegacao1 onClick={handleAnterior}>⬅️ Anterior  </BotaoNavegacao1>
-          <BotaoNavegacao2 onClick={handleProximo} disabled={conteudoAtual === conteudos.length - 1}>Próximo ➡️</BotaoNavegacao2>
-        </BotoesContainer>
-        {conteudos[conteudoAtual]}
-        
-        
-      </CurriculoContainer>
-      <FooterContainer>
-        {/* Adicione conteúdo ao seu rodapé conforme necessário */}
-      </FooterContainer>
-    </ThemeProvider>
+      
+        <GlobalStyles /> {/* Essa é a primeira importação do GlobalStyles */}
+        <CurriculoContainer>
+          
+  
+          <Titulo onClick={handleNomeClick}>William Oliveira</Titulo>
+  
+          <FotoRedonda src={suaFoto} alt="Sua Foto" />
+          <BotoesContainer>
+            <BotaoNavegacao1 onClick={handleAnterior}>⬅️ Anterior  </BotaoNavegacao1>
+            <BotaoNavegacao2
+              onClick={handleProximo}
+              disabled={conteudoAtual === conteudos.length - 1}
+            >
+              Próximo ➡️
+            </BotaoNavegacao2>
+          </BotoesContainer>
+          {conteudos[conteudoAtual]}
+        </CurriculoContainer>
+        <FooterContainer>
+          
+        </FooterContainer>
+        <GlobalStyles /> 
+      
     </Layout>
   );
+
+  
 };
 
 export default MeuCurriculo;
