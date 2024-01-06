@@ -21,15 +21,7 @@ const ProjetosContainer = styled.div`
   }
 `;
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color:rgb(255, 213, 0); /* Código de cor para amarelo mostarda */
-    margin: 0; /* Remove as margens padrão do body */
-    padding: 0; /* Remove os preenchimentos padrão do body */
-    
 
-  }
-`;
 const BotoesContainer = styled.div`
   display: flex;
   gap: 16px; /* Espaço entre os botões */
@@ -40,7 +32,7 @@ const BotaoNavegacao = styled.button`
   padding: 10px 20px;
   font-size: 16px;
   background-color: #007bff;
-  color: #fff;
+  
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -56,13 +48,20 @@ const ProjetoImagem = styled.img`
 `;
 const TituloProjeto = styled.h1`
 font-family: 'Archivo Black', sans-serif;
-color: red;
+
 margin-top: 10%;
 `;
 export const Texto = styled.p`
   font-family: 'Archivo Black', sans-serif;
-  color: red;
-  
+  text-align: justify;
+  line-height: 1.5;
+  margin: 10px 0;
+
+  /* Adaptações para telas menores (responsivo) */
+  @media (max-width: 768px) {
+    font-size: 16px;
+    width: 100%; /* Faz o texto ocupar toda a largura da tela em telas pequenas */
+  }
 `;
 const textoPlanilha = 'Este projeto foi iniciado para fazer as planilhas ficarem mais inteligentes, vi que eu tinha uma necessidade de prestar atenção nos tempo de trativas para cada aluno. Logo pensei; "E se eu fizesse um script, que calcula a quantidade de dias com demanda em aberto, enviasse email de alertas para retornos e nesse emails tivesse links e informações sobre aquele tipo de problema?", bom logo coloquei as ideias em práticas e consegui tanto desenvolver uma planilha personalizada do meu jeito e também ajudar outros colaboradores com essa ideia, fiquei muito feliz que deu certo. '
 const textoGolden = 'O projeto Golden Company, foi uma iniciativa minha e do Rennan Pessanha. Oque inspirou essa iniciativa? Bom, foi a ideia de que somos capazes de levar tecnologia para todos os grupos, nesse pensamento surgiu a Golden, ainda é algo pequeno, com grandes ideias. Hoje já somos 5 membros estudando tecnologia e aplicando, melhorando técnicas de design, desenvolvimento no geral e até comunicação como um dos membros percebo que tenho que estudar muito acessibilidade na área tecnológica, é notório que as maiorias das tecnologias não são didáticas para pessoas com mais idades(Outras gerações) também para pessoas Pcd, é um caminho difícil adaptar gerações, grupos não é fácil, porém com trabalho duro e em equipe, podemos tudo.🏗️'
@@ -99,7 +98,7 @@ const Projetos = () => {
 
   return (
     <Layout>
-      <GlobalStyle/>
+      
         
       <ProjetosContainer>
         <TituloProjeto>Sobre os projetos...</TituloProjeto>

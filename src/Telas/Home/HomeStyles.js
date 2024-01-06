@@ -9,7 +9,12 @@ export const ButtonContainer = styled.div`
   top: 300px; /* Ajuste a distância do topo conforme necessário */
   right: 10px; /* Ajuste a distância da direita conforme necessário */
 `;
-
+export const StyledImage = styled.img`
+width: 10%; // Ajuste o tamanho conforme necessário
+height: 10%;
+cursor: pointer;
+margin-right: 5px; // Adicione margem à direita para separar a imagem do texto
+`;
 
 export const CurriculoContainer = styled.div`
   max-width: 800px;
@@ -91,10 +96,12 @@ export const BotaoNavegacao1 = styled.button`
   background: none;
   margin-right: 5px;
   cursor: pointer;
+  color: red;
   padding: 0;
   outline: none;
   padding: 8px 12px;
-  color: #333;
+  font-family: 'Roboto', sans-serif;
+ 
   transition: color 0.3s ease;
 
 `;
@@ -169,14 +176,128 @@ export const ThemeToggle = styled.button`
   cursor: pointer;
   outline: none;
 `;
+export const SelectContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 
-export const TwoColumnContainer = styled.div`
-display: flex;
-gap: 20px; /* Adiciona um espaçamento entre as colunas */
+export const StyledSelect = styled.select`
+  font-size: 16px;
+  padding: 12px;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #333333;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: #2980b9;
+  }
+
+  &:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+  }
+`;
+export const StyledTexto = styled.p`
+  font-family: 'Rubik Doodle Shadow', sans-serif;
+  /* Outras propriedades de estilo conforme necessário */
+  margin-top: 20%; /* Ajuste conforme necessário */
+  font-size: 1em; /* Ajuste conforme necessário */
+  @media (max-width: 768px) {
+    margin-top: 20%;
+    
+    font-size: 1em; /* Ajuste conforme necessário para telas menores */
+  }
+`;
+export const ImagemTecnologia = styled.img`
+  width: 10%;  /* Ajuste conforme necessário */
+  height: 10%; /* Ajuste conforme necessário */
+  margin: 1%;  /* Espaçamento entre as imagens */
+  border-radius: 8px; /* Borda arredondada */
+  display: inline-block;
+  
+  /* Adicione mais estilos conforme necessário */
+`;
+export const StyledJsImage = styled(ImagemTecnologia)`
+width: 10%;  /* Ajuste conforme necessário */
+height: 10%; /* Ajuste conforme necessário */
+margin: 1%;  /* Espaçamento entre as imagens */
+margin-left: -60%; 
+border-radius: 8px; /* Borda arredondada */
+display: inline-block;
+`;
+
+// Styled para React
+export const StyledReactImage = styled(ImagemTecnologia)`
+width: 10%;  /* Ajuste conforme necessário */
+height: 10%; /* Ajuste conforme necessário */
+margin: 1%;  /* Espaçamento entre as imagens */
+margin-top:-11%;
+margin-left: -30%;
+border-radius: 8px; /* Borda arredondada */
+display: inline-block;
+`;
+
+// Styled para C#
+export const StyledCImage = styled(ImagemTecnologia)`
+width: 20%;  /* Ajuste conforme necessário */
+height: 20%; /* Ajuste conforme necessário */
+margin: 1%;  /* Espaçamento entre as imagens */
+margin-right: 0%;
+margin-top:-14%;
+border-radius: 8px; /* Borda arredondada */
+display: inline-block;
+`;
+
+// Styled para MongoDB
+export const StyledMongoImage = styled(ImagemTecnologia)`
+width: 10%;  /* Ajuste conforme necessário */
+height: 10%; /* Ajuste conforme necessário */
+margin: 1%;  /* Espaçamento entre as imagens */
+border-radius: 8px; /* Borda arredondada */
+margin-top: -11%;
+margin-left: 30%; /*
+display: inline-block;
+`;
+
+// Styled para MySQL
+export const StyledMysqlImage = styled(ImagemTecnologia)`
+width: 10%;  /* Ajuste conforme necessário */
+height: 10%; /* Ajuste conforme necessário */
+margin: 1%;  /* Espaçamento entre as imagens */
+border-radius: 8px; /* Borda arredondada */
+display: inline-block;
+margin-right: -60%;
+margin-top: -6%;
+`;
+
+export const StyledOption = styled.option`
+  font-size: 14px;
+  padding: 12px;
+  background-color: #f8f8f8;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+    color: #000;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #d0d0d0;
+    color: #000;
+  }
 `;
 
 export const Column = styled.div`
-flex: 1; /* As colunas ocuparão a mesma largura */
+margin-left: 10px;
+
+align-items: flex;
 `;
 
 const pulse = keyframes`
@@ -191,13 +312,35 @@ const pulse = keyframes`
   }
 `;
 
-export const StyledDiv = styled.div`
-  border: 2px solid #333;
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  animation: ${pulse} 2s infinite; /* Adiciona a animação à borda por 2 segundos, repetindo infinitamente */
+export const TwoColumnContainer = styled.div`
+  display: flex;
+  gap: 20px; /* Adiciona um espaçamento entre as colunas */
 `;
+
+export const StyledDiv = styled.div`
+  /* Outros estilos... */
+
+  /* Adiciona estilos específicos para os selects */
+  select {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 2px solid #aaa;
+    transition: border 0.3s ease;
+
+    &:hover {
+      border-color: #555;
+    }
+
+    &:focus {
+      border-color: #ff0000;
+    }
+
+    /* Define uma largura fixa para os selects */
+    width: 150px;
+  }
+`;
+
+
 // Se você estiver usando Styled Components, adicione ao seu arquivo HomeStyles.js
 
 

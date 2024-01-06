@@ -17,7 +17,7 @@ const ProjetoTitulo = styled.h3`
 `;
 
 const ProjetoDescricao = styled.p`
-  color: #555;
+ 
 `;
 
 const Projeto = ({ imagem, titulo, descricao }) => (

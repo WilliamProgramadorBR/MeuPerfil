@@ -6,6 +6,7 @@ import Header from '../Componentes/topo/Headers';// Verifique o caminho correto 
 import Footer from '../Componentes/rodape/foooter';
 import Certificados from '../Telas/Certificados/certificados';
 import Tecnologia from '../Telas/Tecnologias/Tecnologia';
+import NotFound from '../Telas/Notfound/NotFound';
 
 
 
@@ -21,6 +22,8 @@ const AppRoutes = () => {
       <Route path='/Tecnologias'element={<Tecnologia/>}></Route>
       <Route path='/Headers'element={<Header/>}></Route>
       <Route path="/certificados" element={<Certificados/>} />
+      <Route path="/*" element={<NotFound/>} />
+
     </Routes>
 
     <Footer />

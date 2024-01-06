@@ -5,14 +5,6 @@ import Nodejs from '../../Fotos/Nodejs.jpg';
 import ReactCurso from '../../Fotos/React.jpg';
 import Layout from '../../Componentes/menu-lateral/Layout';
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: rgb(255, 213, 0);
-    margin: 0;
-    padding: 0;
-    transition: height 0.3s ease;
-  }
-`;
 
 const CertificadosContainer = styled.div`
   display: flex;
@@ -63,7 +55,7 @@ const PopupContainer = styled.div`
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: red;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -73,7 +65,7 @@ const PopupContainer = styled.div`
 
 const PopupText = styled.p`
   margin: 0;
-  color: 'black',
+  
   font-family: 'Arial', sans-serif;
 `;
 
@@ -135,7 +127,7 @@ const Certificados = () => {
 
   return (
     <div>
-      <GlobalStyle />
+      
       <Layout>
       {showPopup && <Popup text={popupText} onClose={handleClosePopup} />}
       <CertificadosContainer>
