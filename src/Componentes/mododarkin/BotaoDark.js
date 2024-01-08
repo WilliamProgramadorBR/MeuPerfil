@@ -18,8 +18,8 @@ const BotaoDark = ({ toggleTheme, currentTheme }) => {
     return (
         <StyledDiv>
         <StyledButtonContainer theme={currentTheme} onClick={handleClick}>
-          <img src={iconSrc} alt={iconAlt} style={{ marginRight: '5px', width: '20px', height: '20px' }} />
-          Alternar Modo: {currentTheme === 'light' ? 'Claro' : 'Escuro'}
+          <img src={iconSrc} alt={iconAlt} style={{ marginRight: '0%', width: '100%', height: '100%' }} />
+         {currentTheme === 'light' ? 'Claro' : 'Escuro'}
         </StyledButtonContainer>
       </StyledDiv>
       

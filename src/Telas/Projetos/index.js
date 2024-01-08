@@ -6,6 +6,7 @@ import { BotaoNavegacao1 } from '../Home/HomeStyles';
 import planilha from '../../Fotos/planilhagif.gif';
 import hotjar from '../../Fotos/hotajr.gif';
 import Oie from '../../Fotos/Oie.gif';
+import Js from '../../Fotos/gifJs.gif'; import Reactgif from '../../Fotos/GifReact.gif'; import C from '../../Fotos/gifdoC.gif'; import mongo from '../../Fotos/gifMongo.gif'; import mysql from '../../Fotos/Mysql.png'; 
 
 const ProjetosContainer = styled.div`
   display: flex;
@@ -43,16 +44,23 @@ const BotaoNavegacao = styled.button`
 `;
 const ProjetoImagem = styled.img`
   width: 100%;
-  max-height: 10%; 
+  height: auto;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 `;
 const TituloProjeto = styled.h1`
-font-family: 'Archivo Black', sans-serif;
-
-margin-top: 10%;
+  font-family: 'Lora', serif; /* Alterado para a fonte 'Lora' */
+  margin-top: 10%;
 `;
+
+
 export const Texto = styled.p`
-  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Lora', serif; /* Alterado para a fonte 'Lora' */
   text-align: justify;
   line-height: 1.5;
   margin: 10px 0;
@@ -70,6 +78,7 @@ const Projetos = () => {
   const projetos = [
     {
       imagem: planilha,
+      tecnologia: Js, 
       titulo: 'Projeto planilha inteligente',
       descricao: textoPlanilha,
     },
@@ -95,26 +104,39 @@ const Projetos = () => {
   const handleProjetoProximo = () => {
     setProjetoAtual((prevProjeto) => (prevProjeto < projetos.length - 1 ? prevProjeto + 1 : 0));
   };
-
+ const TecnologiaImagem = styled.img`
+  width: 50px; /* Ajuste o valor conforme necessário para deixar a imagem pequena */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 50%; /* Adiciona borda arredondada (opcional, ajuste conforme necessário) */
+  margin-right: 10px; /* Espaçamento à direita (opcional, ajuste conforme necessário) */
+  margin-top: 0%;
+`;
   return (
     <Layout>
       
         
       <ProjetosContainer>
         <TituloProjeto>Sobre os projetos...</TituloProjeto>
-        {/* Conteúdo do projeto atual */}
+        
        <ProjetoImagem
     src={projetos[projetoAtual].imagem}
+   
     alt={projetos[projetoAtual].titulo}
-    style={{ width: '60%', maxHeight: '40%', objectFit: 'cover' }}
-  />
+   
+  /><p>Tecnologias usadas no projeto:</p><TecnologiaImagem
+  src={projetos[projetoAtual].tecnologia}
+  
+ 
+
+ 
+/>
   <Texto><Projeto
   titulo={typeof projetos[projetoAtual].titulo === 'string' ? projetos[projetoAtual].titulo : ''}
   descricao={projetos[projetoAtual].descricao}/></Texto>
   
 {console.log('Título:', projetos[projetoAtual].titulo)}
 
-        {/* Botões de navegação */}
+        
         <BotaoNavegacao1 onClick={handleProjetoAnterior}>⬅️ Projeto Anterior</BotaoNavegacao1>
         <BotaoNavegacao1 onClick={handleProjetoProximo}>Próximo Projeto ➡️</BotaoNavegacao1>
       </ProjetosContainer>

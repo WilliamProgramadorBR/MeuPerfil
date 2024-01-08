@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
-  background-image: linear-gradient(135deg, #9da2b2 50%, #e5e3de 30%, #576687 100%);
+  background-image: linear-gradient(180deg, #000 0%, #fff 100%);
   padding: 20px; /* Ajuste o valor do padding conforme necessário */
   text-align: center;
   position: fixed;

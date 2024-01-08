@@ -7,6 +7,7 @@ import {GlobalStyles} from'./../../Componentes/mododarkin/StyledWebsite'
 
 
 const MeuCurriculo = () => {
+  
   const handleProximo = () => {
     setConteudoAtual((prev) => (prev < conteudos.length - 1 ? prev + 1 : prev));
   };
@@ -239,6 +240,7 @@ const [mostrarCursoBackend, setMostraBackend] = useState(false);
        
     (
       <StyledDiv>
+      
         <TwoColumnContainer>
           <Column>
             <TextoContainer>
@@ -489,7 +491,7 @@ const [mostrarCursoBackend, setMostraBackend] = useState(false);
       
         <GlobalStyles /> {/* Essa é a primeira importação do GlobalStyles */}
         <CurriculoContainer>
-          
+        
         <StyledTexto>
   Bem-vindo ao meu portfólio! Este site foi criado para oferecer uma visão mais aprofundada das minhas habilidades em desenvolvimento web com React. Explore as diferentes telas para ver demonstrações interativas e avançadas das minhas capacidades. Seja bem-vindo e fique à vontade para explorar!
 </StyledTexto>
