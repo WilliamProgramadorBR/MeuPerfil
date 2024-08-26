@@ -47,7 +47,7 @@ export const ProjectDescription = styled.p`
 `;
 
 export const ProjectImage = styled.img`
-  width: 10%;
+  width: 20%;
   height: auto;
   border-radius: 8px;
   margin-bottom: 20px;

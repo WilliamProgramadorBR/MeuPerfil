@@ -4,11 +4,16 @@ import { useParams } from 'react-router-dom';
 import { Container, Main, ProjectTitle, ProjectDescription, ProjectDetailsContainer, ProjectImage, ProjectTechnologies, TechImage, ProjectLinks, GalleryButton } from './Projetostyle.js';
 import Layout from '../../Componentes/menu-lateral/Layout';
 import Footer from '../../Componentes/rodape/rodape'; 
-import { texto, img } from '../../Textos_projetos/projeto_financas';
+import  textofinanca  from '../../Textos_projetos/projeto_financas.js';
+import {textosuporte,suporteimg} from '../../Textos_projetos/projeto_helpdesk.js'
 import Node from '../../Fotos/GifNode.gif';
+import suporte from '../../Fotos/suporte.jpg';
 import Electron from '../../Fotos/electron.png';
 import Docker from '../../Fotos/Docker.png';
 import financas from '../../Fotos/image.png';
+import kanbanize from '../../Fotos/kanbanize.png';
+import jenkins from '../../Fotos/jenkins.png'
+import scrum from '../../Fotos/scrum.png';
 import GalleryModal from '../../Componentes/Gallery'; 
 import viewFinance from '../../Views/Aplicativo de finanças 2024-08-11 23-45-18.mp4'
 
@@ -25,11 +30,20 @@ const projectData = {
   2: {
     title: 'Aplicativo de finanças',
     image: financas,
-    description: texto,
-    technologies: [img, Node, Electron, Docker],
+    description: textofinanca,
+    technologies: [jenkins, Node, Electron, Docker],
     repository: 'https://github.com/WilliamProgramadorBR/Gerenciador-financeiro',
     details: 'Abaixo faça o seu download',
-    gallery: [img, Node, viewFinance, Docker]
+    gallery: [jenkins, Node, viewFinance, Docker]
+  },
+  3: {
+    title: 'Suporte técnico MedGrupo',
+    image: suporte,
+    description: textosuporte,
+    technologies: [kanbanize, scrum, suporteimg, Docker],
+    repository: 'https://github.com/WilliamProgramadorBR/Gerenciador-financeiro',
+    details: 'Abaixo faça o seu download',
+    gallery: [jenkins, Node, viewFinance, Docker]
   },
 };
 

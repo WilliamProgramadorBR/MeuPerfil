@@ -51,7 +51,7 @@ const MeuCurriculo = () => {
           </Section>
           <HiddenElement ref={projetosRef} className={projetosInView ? 'visible' : ''}>
             <Section id="projetos">
-              <StyledH2>Projetos</StyledH2>
+              <StyledH2>Projetos e experiências</StyledH2>
               <ProjectsGrid>
                 <Project onClick={() => handleProjectClick(1)}>
                   <StyledH2>Plataforma Geniuz</StyledH2>
@@ -60,6 +60,10 @@ const MeuCurriculo = () => {
                 <Project onClick={() => handleProjectClick(2)}>
                   <StyledH2>Aplicativo de finanças</StyledH2>
                   <StyledP>Plataforma feita para computadores, Linux, MacOs e Windows .</StyledP>
+                </Project>
+                <Project onClick={() => handleProjectClick(3)}>
+                  <StyledH2>HelpDesk</StyledH2>
+                  <StyledP>Experiência como suporte técnico HelpDesk </StyledP>
                 </Project>
               </ProjectsGrid>
             </Section>
