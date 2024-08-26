@@ -1,44 +1,19 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from '../Telas/Home'; // Verifique o caminho correto para o componente Home
-import Projetos from '../Telas/Projetos'; 
-import Header from '../Componentes/topo/Headers';// Verifique o caminho correto para o componente Projetos
-import Footer from '../Componentes/rodape/foooter';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from '../Telas/Home/index';
+import ProjectDetails from '../Telas/Projetos/index';
 import Certificados from '../Telas/Certificados/certificados';
-import Tecnologia from '../Telas/Tecnologias/Tecnologia';
-import NotFound from '../Telas/Notfound/NotFound';
 
-
-
-
-const AppRoutes = () => {
+function App() {
   return (
-    <div>
-      <Header/>
-    <Routes>
-      
-      <Route path="/" element={<Home />} />
-      <Route path="/Projetos" element={<Projetos />} />
-      <Route path='/Tecnologias'element={<Tecnologia/>}></Route>
-      <Route path='/Headers'element={<Header/>}></Route>
-      <Route path="/certificados" element={<Certificados/>} />
-      <Route path="/*" element={<NotFound/>} />
-
-    </Routes>
-
-    <Footer />
-    
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/certificados" element={<Certificados />} />
+        <Route path="/projeto/:id" element={<ProjectDetails />} />
+      </Routes>
+    </Router>
   );
-};
-
-const App = () => {
-  return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-    
-  );
-};
+}
 
 export default App;

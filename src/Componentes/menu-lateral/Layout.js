@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
-import menuIcon from '../../Fotos/menu.png'; // Importe o caminho da sua imagem aqui
+// Exemplo com Font Awesome
+import { FaBars } from 'react-icons/fa';
 
 const MainContainer = styled.div`
   display: flex;
@@ -37,9 +38,10 @@ const MenuButton = styled.button`
   z-index: 2;
 `;
 
-const MenuIcon = styled.img`
-  width: 30px; // Ajuste o tamanho conforme necessário
-  height: 30px; // Ajuste o tamanho conforme necessário
+const MenuIcon = styled(FaBars)`
+  width: 30px; /* Ajuste o tamanho conforme necessário */
+  height: 30px; /* Ajuste o tamanho conforme necessário */
+  color: ${({ theme }) => theme.text}; /* Cor do ícone, ajuste conforme necessário */
 `;
 
 const Layout = ({ children }) => {
@@ -60,7 +62,7 @@ const Layout = ({ children }) => {
       <ContentContainer>
         {/* Botão para abrir o menu lateral */}
         <MenuButton onClick={handleToggleSidebar}>
-          <MenuIcon src={menuIcon} alt="Menu" />
+          <MenuIcon />
         </MenuButton>
         {/* Conteúdo principal do seu site */}
         {children}

@@ -1,37 +1,24 @@
-import React, { useState } from 'react';
+// src/App.js
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Routes from './Rotas/Routes';
-import { StyledWebsite, theme } from './Componentes/mododarkin/StyledWebsite';
-import BotaoDark from './Componentes/mododarkin/BotaoDark';
+import { ThemeContext, ThemeProvider as CustomThemeProvider } from './Styles/context/ThemeContext';
+import BotaoDark from './Styles/Config_modo_tema/Tema_modo';
+import GlobalStyles from './Styles/Estilo_global';
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
-    font-family: 'Arial', sans-serif;
-  }
-`;
+
 
 const App = () => {
-  const [currentTheme, setCurrentTheme] = useState('light');
-
-  const toggleTheme = () => {
-    setCurrentTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <ThemeProvider theme={theme[currentTheme]}>
-      <StyledWebsite>
-        <GlobalStyles />
-        <React.StrictMode>
-          <Routes />
-        </React.StrictMode>
-        
-        <BotaoDark toggleTheme={toggleTheme} currentTheme={currentTheme} />
-      </StyledWebsite>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <React.StrictMode>
+        <Routes />
+      </React.StrictMode>
+      <BotaoDark />
     </ThemeProvider>
   );
 };
@@ -40,4 +27,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root')
 );
 
-root.render(<App />);
+root.render(
+  <CustomThemeProvider>
+    <App />
+  </CustomThemeProvider>
+);

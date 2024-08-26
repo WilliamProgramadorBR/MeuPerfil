@@ -141,14 +141,8 @@ const Sidebar = ({ isOpen, onClose, toggleTheme, currentTheme }) => {
   <SubMenuItem>
     <StyledLink to="/">Página inicial</StyledLink>
   </SubMenuItem>
-  <SubMenuItem>
-    <StyledLink to="/tecnologias">Sobre tecnlogias e campo de atuação</StyledLink>
-  </SubMenuItem>
-  <SubMenuItem>
-    <StyledLink to="/Projetos">Meus projetos</StyledLink>
-  </SubMenuItem>
-  <SubMenuItem>
-    <StyledLink to="/Certificados">Meus certificados</StyledLink>
+   <SubMenuItem>
+    <StyledLink to="/certificados">  Meus certificados</StyledLink>
   </SubMenuItem>
   
 </SubMenu>
