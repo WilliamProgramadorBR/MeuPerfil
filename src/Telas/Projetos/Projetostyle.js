@@ -45,7 +45,14 @@ export const ProjectDescription = styled.p`
   margin-bottom: 20px;
   font-family: 'Roboto', sans-serif; /* Fonte para parágrafos */
 `;
-
+export const StyledParagraph = styled.p`
+  font-family: 'Raleway', sans-serif; /* Fonte para parágrafos */
+  font-size: 15px; /* Tamanho da fonte */
+  line-height: 1.4; /* Espaçamento entre linhas */
+  color: ${({ theme }) => theme.text}; /* Cor do texto */
+  margin-bottom: 16px; /* Espaçamento abaixo do parágrafo */
+  text-align: justify; /* Justifica o texto para alinhamento uniforme */
+`;
 export const ProjectImage = styled.img`
   width: 20%;
   height: auto;

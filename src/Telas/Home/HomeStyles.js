@@ -16,6 +16,7 @@ export const Main = styled.main`
   box-sizing: border-box; /* Inclui padding na largura total */
 `;
 
+
 // Sections
 export const Section = styled.section`
   margin-bottom: 40px;
@@ -33,31 +34,25 @@ export const ProfileImage = styled.img`
   @media (max-width: 768px) {
     width: 100px; /* Reduz o tamanho da imagem em telas pequenas */
     height: 100px;
+    margin-left: center;
+  
   }
 `;
 
 // Container de imagens de tecnologias
+
 export const ImageContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* Centraliza o conteúdo */
-  width: 100%; /* Garante que o container ocupa a largura total */
-  padding: 10px; /* Adiciona um pouco de espaçamento interno */
-  box-sizing: border-box; /* Inclui padding na largura total */
+  gap: 50px; /* Espaço entre as imagens */
 `;
 
-// Imagens de tecnologias
 export const TechImage = styled.img`
-  width: 100px;
-  height: 100px;
-  object-fit: cover; /* Garante que a imagem se ajuste ao tamanho sem distorcer */
-  border-radius: 8px; /* Adiciona bordas arredondadas se desejado */
-
-  @media (max-width: 768px) {
-    width: 100px; /* Reduz o tamanho das imagens em telas pequenas */
-    height: 100px;
-  }
+  width: 100px; /* Largura padrão */
+  height: 100px; /* Altura padrão */
+  object-fit: contain; /* Mantém a proporção e evita cortes */
+  border-radius: 8px; /* Bordas arredondadas */
+  background-color: #f0f0f0; /* Cor de fundo para imagens menores */
 `;
 
 // Elementos escondidos com animação
@@ -77,7 +72,9 @@ export const StyledH2 = styled.h2`
   margin-bottom: 20px; /* Espaço abaixo do título */
   border-bottom: 2px solid ${({ theme }) => theme.primaryColor}; /* Linha abaixo do título */
   padding-bottom: 10px; /* Espaço abaixo da linha */
+  font-family: 'Geneva', sans-serif; /* Fonte Geneva */
 `;
+
 
 export const StyledP = styled.p`
   font-size: 1rem; /* Tamanho da fonte padrão */
@@ -107,8 +104,44 @@ export const Project = styled.div`
   box-shadow: 0 0 10px ${({ theme }) => theme.borderColor};
   cursor: pointer;
   box-sizing: border-box; /* Inclui padding e bordas na largura total */
+  position: relative; /* Necessário para posicionar o Tooltip */
 
   &:hover {
     background: ${({ theme }) => theme.hoverBackground};
+  }
+
+  &:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-10px); /* Efeito de subida */
+  }
+`;
+
+export const Tooltip = styled.span`
+  visibility: hidden;
+  width: 180px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Posição acima do elemento */
+  left: 50%;
+  margin-left: -90px;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Parte inferior do tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
   }
 `;

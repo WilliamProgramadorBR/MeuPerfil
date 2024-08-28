@@ -29,16 +29,49 @@ export const StyledWebsite = styled.div`
 `;
 
 export const StyledButtonContainer = styled.button`
-  background: ${({ theme }) => theme.background};
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.text};
   border: none;
-  padding: 10px;
+  border-radius: 50px;
   cursor: pointer;
-  border-radius: 5px;
   display: flex;
   align-items: center;
-  margin: 20px;
-  margin-top: -2%;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    top: 0.5rem;
+    right: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    top: 0.3rem;
+    right: 0.8rem; /* Aumentar o espaçamento da borda */
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 400px) {
+    top: 0.3rem;
+    right: 0.8rem; /* Aumentar o espaçamento da borda */
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 375px) {
+    top: 0.3rem;
+    right: 1rem; /* Mais espaço para iPhone SE */
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem; /* Ajuste de tamanho da fonte */
+  }
 `;
 
 export const Input = styled.input`
