@@ -5,10 +5,17 @@ import { theme as themeConfig } from '../Config_modo_tema/StyledWebsite';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState('light');
+  const [currentTheme, setCurrentTheme] = useState(() => {
+    const savedTheme = window.localStorage.getItem('portfolio-theme');
+    return savedTheme && themeConfig[savedTheme] ? savedTheme : 'light';
+  });
 
   const toggleTheme = () => {
-    setCurrentTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    setCurrentTheme((prevTheme) => {
+      const nextTheme = prevTheme === 'light' ? 'dark' : 'light';
+      window.localStorage.setItem('portfolio-theme', nextTheme);
+      return nextTheme;
+    });
   };
 
   const value = useMemo(() => ({

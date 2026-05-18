@@ -1,15 +1,24 @@
-import suporteimgs from '../Fotos/suporte.jpg'
-const suporteimg = suporteimgs
-const textosuporte = "Atuo no suporte técnico e help desk, visando proporcionar um atendimento direto ao cliente para entender suas dificuldades em relação às tecnologias da empresa. Minhas responsabilidades incluem a criação de cards para a equipe de desenvolvimento, testar aplicativos em ambiente de homologação antes do lançamento em produção, avaliar o software e suas correções de bugs, além de oferecer suporte remoto para solucionar problemas e desafios dos clientes.";
+import suporteimgs from '../Fotos/suporte.jpg';
 
+const suporteimg = suporteimgs;
 
-const suporteTecnicoIntroducao = 'Dei início à área de suporte técnico começando como estagiário. Atuei como estagiário por 1 ano e, logo depois, fui efetivado.';
+const textosuporte =
+  'Minha atuação em suporte técnico, help desk, homologação e controladoria de projetos me deu uma visão forte de produto: entender usuários, mapear bugs, traduzir regras de negócio e transformar processos manuais em automações úteis.';
 
-const suporteTecnicoProjeto = 'Por estar cursando a área de desenvolvimento, desenvolvi um projeto dentro da empresa, usando MongoDB, Node.js, e JavaScript como linguagem, com o front-end em HTML e CSS. No entanto, devido a uma necessidade maior, mudamos o back-end para C#. Assim, demos uma ideia interessante de como poderíamos solucionar algumas melhorias internas do nosso setor.';
+const suporteTecnicoIntroducao =
+  'Comecei no MEDGRUPO como estagiário de TI, dando suporte a usuários finais e participando de um projeto full stack com Node.js e C# .NET.';
+const suporteTecnicoProjeto =
+  'Depois evoluí para suporte e help desk, analisando bugs, regras de negócio, solicitações de melhoria, testes em homologação e cards para o time de desenvolvimento.';
+const suporteTecnicoExperiencia =
+  'Como analista de helpdesk, trabalhei com Scrum, Kanbanize, WhatsApp, e-mail e planilhas Google, criando bots para acompanhar movimentações e tratativas importantes.';
+const suporteTecnicoConclusao =
+  'Hoje, em controladoria e projetos, desenvolvo scripts em JavaScript e Node.js para Blip, Freshdesk, Kanbanize e Asternic, além de dashboards e treinamentos para novos colaboradores.';
 
-const suporteTecnicoExperiencia = 'Fui promovido a efetivo, onde comecei, junto com a equipe de desenvolvimento, a solucionar problemas, sugerir melhorias e fornecer orientações para nossos alunos residentes de medicina. Utilizamos ferramentas como Kanbanize na metodologia Scrum e Slack para comunicação. Desenvolvi bots inteligentes que extraíam dados das planilhas criadas pelo setor e alertavam os agentes sobre tratativas pendentes, cenários e outras informações importantes para manter os alunos com dificuldades técnicas no nosso radar.';
+const details_suporte = [
+  suporteTecnicoIntroducao,
+  suporteTecnicoProjeto,
+  suporteTecnicoExperiencia,
+  suporteTecnicoConclusao,
+];
 
- const suporteTecnicoConclusao =' A experiência adquirida incluiu atendimento, construção de planilhas, metodologias e atuação em equipe. Para a área de desenvolvimento, foi o meu primeiro contato com Node.js e JavaScript.';
-
-const details_suporte = [suporteTecnicoIntroducao,suporteTecnicoProjeto,suporteTecnicoExperiencia,suporteTecnicoConclusao]
-export {details_suporte,suporteimg, textosuporte}
+export { details_suporte, suporteimg, textosuporte };

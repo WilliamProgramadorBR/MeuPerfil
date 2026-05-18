@@ -1,204 +1,181 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import styled from 'styled-components';
+import {
+  FaAndroid,
+  FaBriefcase,
+  FaCertificate,
+  FaDownload,
+  FaEnvelope,
+  FaGithub,
+  FaHome,
+  FaLinkedinIn,
+  FaTimes,
+} from 'react-icons/fa';
+import { profile } from '../../data/portfolio';
 
-// Contêiner da barra lateral
-const SidebarContainer = styled.div`
+const Overlay = styled.div`
   position: fixed;
-  top: 0;
-  left: ${({ isOpen }) => (isOpen ? '0' : '-320px')};
-  width: 320px;
-  height: 100%;
-  background: rgba(0, 123, 255, 0.5); /* Azul mais intenso com opacidade */
-  color: #ffffff; /* Texto branco para contraste */
-  padding-top: 60px;
-  transition: left 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
-  box-shadow: ${({ isOpen }) => (isOpen ? '0 4px 12px rgba(0, 0, 0, 0.3)' : 'none')};
-  backdrop-filter: blur(10px); /* Efeito de vidro */
-  -webkit-backdrop-filter: blur(10px); /* Efeito de vidro para WebKit */
-  z-index: 3;
-  overflow-y: auto; /* Adiciona rolagem vertical se necessário */
-  
-  /* Animação e responsividade */
-  @media (max-width: 768px) {
-    width: 250px;
+  inset: 0;
+  z-index: 40;
+  display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+  background: rgba(0, 0, 0, 0.38);
+`;
+
+const SidebarContainer = styled.aside`
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 50;
+  width: min(360px, 88vw);
+  padding: 24px;
+  transform: translateX(${({ $isOpen }) => ($isOpen ? '0' : '105%')});
+  transition: transform 0.28s ease;
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.text};
+  border-left: 1px solid ${({ theme }) => theme.borderColor};
+  box-shadow: ${({ theme }) => theme.shadow};
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const SidebarHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  strong {
+    font-size: 1rem;
   }
 
-  @media (max-width: 480px) {
-    width: 200px;
+  span {
+    color: ${({ theme }) => theme.textMuted};
+    font-size: 0.86rem;
   }
 `;
 
-// Botão de fechar
 const CloseButton = styled.button`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: #ffffff; /* Texto branco */
-  font-size: 24px;
-  background: none;
-  border: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 8px;
+  background: transparent;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-  
-  &:hover {
-    color: #cccccc; /* Cor clara ao passar o mouse */
-    transform: rotate(90deg);
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-// Item do menu
-const MenuItem = styled(Link)`
-  display: block;
-  padding: 15px;
-  margin: 0;
-  font-size: 18px;
-  color: #ffffff; /* Texto branco */
+const NavGroup = styled.nav`
+  display: grid;
+  gap: 10px;
+`;
+
+const DrawerLink = styled.a`
+  min-height: 46px;
+  padding: 0 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
-  border-left: 5px solid transparent;
-  transition: background-color 0.3s ease, padding-left 0.3s ease, border-left 0.3s ease;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.background};
+  font-weight: 700;
 
   &:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
-    padding-left: 25px;
-    border-left: 5px solid #003d7a; /* Azul mais escuro para a borda */
+    border-color: ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.primaryColor};
   }
 `;
 
-// Item do menu com submenu
-const MenuItemWithSubMenu = styled.div`
-  position: relative;
-  cursor: pointer;
-  padding: 15px;
-  font-size: 18px;
-  color: #ffffff; /* Texto branco */
-  transition: background-color 0.3s ease, padding-left 0.3s ease, border-left 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
-    padding-left: 25px;
-    border-left: 5px solid #003d7a; /* Azul mais escuro para a borda */
-  }
-
-  & > span {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    transform: ${({ isSubMenuOpen }) => (isSubMenuOpen ? 'rotate(90deg)' : 'rotate(0)')};
-  }
-`;
-
-// Submenu
-const SubMenu = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background-color: rgba(0, 123, 255, 0.3); /* Azul claro com opacidade para o submenu */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  max-height: ${({ isSubMenuOpen }) => (isSubMenuOpen ? '200px' : '0')};
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-  opacity: ${({ isSubMenuOpen }) => (isSubMenuOpen ? '1' : '0')};
-`;
-
-// Item do submenu
-const SubMenuItem = styled.li`
-  padding: 10px 20px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #003d7a; /* Azul escuro ao passar o mouse */
-  }
-`;
-
-// Links do submenu e links externos
-const StyledLink = styled(Link)`
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  color: #ffffff; /* Texto branco */
+const DrawerRouterLink = styled(Link)`
+  min-height: 46px;
+  padding: 0 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.background};
+  font-weight: 700;
 
   &:hover {
-    background-color: #003d7a; /* Azul escuro ao passar o mouse */
+    border-color: ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.primaryColor};
   }
 `;
 
-const StyledExternalLink = styled.a`
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  color: #ffffff; /* Texto branco */
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #003d7a; /* Azul escuro ao passar o mouse */
-  }
+const SidebarFooter = styled.div`
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
 `;
 
-// Componente Sidebar
-const Sidebar = ({ isOpen, onClose, toggleTheme, currentTheme }) => {
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-  const [isSubMenuOpenRede, setIsSubMenuOpenRede] = useState(false);
-
-  // Função para alternar o submenu principal
-  const handleSubMenuToggle = () => {
-    setIsSubMenuOpen(prev => !prev);
-  };
-
-  // Função para alternar o submenu de rede social
-  const handleSubMenuRedeToggle = () => {
-    setIsSubMenuOpenRede(prev => !prev);
-  };
+const Sidebar = ({ isOpen, onClose }) => {
+  const close = () => onClose?.();
 
   return (
-    <SidebarContainer isOpen={isOpen}>
-      <CloseButton onClick={onClose}>&times;</CloseButton>
-      <MenuItem to="https://github.com/WilliamProgramadorBR/Hello_django" target="_blank" rel="noopener noreferrer">
-        Projeto Django 👨🏿‍💻
-      </MenuItem>
-      <MenuItem to="https://github.com/WilliamProgramadorBR/CursoC-Estudos" target="_blank" rel="noopener noreferrer">
-        Meus conhecimentos em C# 👨🏿‍💻
-      </MenuItem>
-      <MenuItem to="https://github.com/WilliamProgramadorBR/Sistema-Help-desk" target="_blank" rel="noopener noreferrer">
-        Projeto HelpDesk C# 👨🏿‍💻
-      </MenuItem>
-      <MenuItem to="https://github.com/Rennan-Pessanha/Site-Helpdesk/graphs/contributors" target="_blank" rel="noopener noreferrer">
-        Todos os Devs e amigos, Projeto HD
-      </MenuItem>
-      
-      {/* Submenu principal */}
-      <MenuItemWithSubMenu onClick={handleSubMenuToggle} isSubMenuOpen={isSubMenuOpen}>
-        <span>&#9654;</span> Navegação pelo site
-        <SubMenu isSubMenuOpen={isSubMenuOpen}>
-          <SubMenuItem>
-            <StyledLink to="/">Página inicial</StyledLink>
-          </SubMenuItem>
-          <SubMenuItem>
-            <StyledLink to="/certificados">Meus certificados</StyledLink>
-          </SubMenuItem>
-        </SubMenu>
-      </MenuItemWithSubMenu>
+    <>
+      <Overlay $isOpen={isOpen} onClick={close} />
+      <SidebarContainer $isOpen={isOpen} aria-hidden={!isOpen}>
+        <SidebarHeader>
+          <Title>
+            <strong>{profile.name}</strong>
+            <span>Portfolio e apps</span>
+          </Title>
+          <CloseButton type="button" onClick={close} aria-label="Fechar menu">
+            <FaTimes />
+          </CloseButton>
+        </SidebarHeader>
 
-      {/* Submenu de Rede Social */}
-      <MenuItemWithSubMenu onClick={handleSubMenuRedeToggle} isSubMenuOpen={isSubMenuOpenRede}>
-        <span>&#9654;</span> Rede social
-        <SubMenu isSubMenuOpen={isSubMenuOpenRede}>
-          <SubMenuItem>
-            <StyledExternalLink href="https://www.linkedin.com/in/william-oliveira-2b944417a/" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </StyledExternalLink>
-          </SubMenuItem>
-          <SubMenuItem>
-            <StyledExternalLink href="https://github.com/WilliamProgramadorBR" target="_blank" rel="noopener noreferrer">
-              Meu GitHub
-            </StyledExternalLink>
-          </SubMenuItem>
-        </SubMenu>
-      </MenuItemWithSubMenu>
-    </SidebarContainer>
+        <NavGroup aria-label="Menu mobile">
+          <DrawerLink href="/#inicio" onClick={close}>
+            <FaHome /> Início
+          </DrawerLink>
+          <DrawerLink href="/#historia" onClick={close}>
+            <FaBriefcase /> História
+          </DrawerLink>
+          <DrawerLink href="/#carreira" onClick={close}>
+            <FaBriefcase /> Carreira
+          </DrawerLink>
+          <DrawerLink href="/#rotina-ai" onClick={close}>
+            <FaAndroid /> Rotina AI
+          </DrawerLink>
+          <DrawerLink href="/#projetos" onClick={close}>
+            <FaGithub /> Projetos
+          </DrawerLink>
+          <DrawerLink href="/#apps" onClick={close}>
+            <FaDownload /> Apps
+          </DrawerLink>
+          <DrawerRouterLink to="/certificados" onClick={close}>
+            <FaCertificate /> Certificados
+          </DrawerRouterLink>
+          <DrawerLink href="/#contato" onClick={close}>
+            <FaEnvelope /> Contato
+          </DrawerLink>
+        </NavGroup>
+
+        <SidebarFooter>
+          <DrawerLink href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+            <FaLinkedinIn /> LinkedIn
+          </DrawerLink>
+          <DrawerLink href={profile.github} target="_blank" rel="noopener noreferrer">
+            <FaGithub /> GitHub
+          </DrawerLink>
+        </SidebarFooter>
+      </SidebarContainer>
+    </>
   );
 };
 

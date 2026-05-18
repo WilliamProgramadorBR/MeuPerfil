@@ -1,20 +1,38 @@
+const textofinanca =
+  'Este aplicativo nasceu para resolver uma necessidade pessoal: acompanhar ganhos, despesas e trabalhos freelancers com mais clareza. A solução evoluiu para um produto desktop com gráficos, interface objetiva e foco em uma rotina financeira simples de entender.';
 
+const introducao =
+  'No front-end, explorei uma arquitetura mais organizada para lidar com telas responsivas, estados visuais e apresentação de dados.';
+const objetivo =
+  'Como o objetivo era gestão financeira, mantive a experiência direta: menos ruído, mais leitura rápida e ações previsíveis para o usuário.';
+const ferramentas =
+  'Usei Docker, Jenkins, Electron, Node.js e ferramentas do navegador para testar responsividade, empacotamento, distribuição e estabilidade.';
+const frontEndDescricao =
+  'A interface foi desenvolvida com JavaScript e TypeScript para reforçar a lógica da aplicação e reduzir erros de tipo.';
+const frontEndArquitetura =
+  'Criei componentes, interfaces e utilitários separados por responsabilidade para facilitar manutenção e evolução.';
+const frontEndOrganizacao =
+  'A organização inclui rotas, hooks, layout global e componentes reutilizáveis, mantendo o código mais previsível.';
+const backEndDescricao =
+  'No back-end, trabalhei com Node.js e TypeScript, mantendo regras de negócio próximas do Electron para simplificar a distribuição desktop e facilitar evolução futura.';
+const backEndDesafio =
+  'O maior desafio foi empacotar a aplicação preservando comunicação local, leitura de dados e comportamento consistente no ambiente desktop.';
+const backEndSolucao =
+  'A solução foi concentrar a camada local em uma estrutura mais simples, adequada ao objetivo do app e ao ciclo de testes.';
+const backEndJustificativa =
+  'Por ser uma aplicação focada em experiência desktop, priorizei estabilidade, clareza e facilidade de uso acima de uma arquitetura excessivamente complexa.';
 
- const textofinanca = "Este aplicativo foi criado com o objetivo de resolver um desafio pessoal: manter minhas finanças em dia, com dados reais sobre meus gastos e ganhos provenientes de trabalhos freelancers e emprego fixo. Diante desse cenário, mergulhei no estudo de técnicas avançadas de front-end para entregar uma interface intuitiva e atraente, com gráficos e animações que enriquecem a experiência do usuário. Estou encantado com o resultado final, fruto de cerca de dois meses de intenso empenho e aprendizado, incluindo a análise de documentações e cursos especializados. Além disso, explorei novas ferramentas como Docker, Jenkins e Electron, para otimizar o ciclo de desenvolvimento e utilizar o Node.js de forma nativa.Estou feliz em compartilhar o repositório do aplicativo, que está disponível para testes e uso. Fique à vontade para baixar e explorar a ferramenta, e use-a com sabedoria! Agradeço pelo interesse e espero que a solução que desenvolvi ajude a melhorar a gestão das suas finanças, assim como tem feito com as minhas.";
+const detailsfinancas = [
+  introducao,
+  objetivo,
+  ferramentas,
+  frontEndDescricao,
+  frontEndArquitetura,
+  frontEndOrganizacao,
+  backEndDescricao,
+  backEndDesafio,
+  backEndSolucao,
+  backEndJustificativa,
+];
 
- const introducao = "Neste aplicativo, senti a necessidade de estudar algumas arquiteturas de desenvolvimentos front-end, pois se tratava de um app que teria uma front-end responsiva, limpa e com bastante detalhes de dados.\n";
- const objetivo = "Como se trata de um gerenciador financeiro, não achei ideal poluir com muitas funções, e sim ser direto ao ponto, tendo uma descrição limpa e direta de cada parte do aplicativo e como o usuário iria interagir com ela.\n";
- const ferramentas = "Ferramentas: No aplicativo foram usadas as ferramentas Docker, Jenkins e o console do navegador para testar a responsividade.\n";
- 
- const frontEndDescricao = "Front-end: Logo no front-end, foi desenvolvido com as tecnologias JavaScript com TypeScript para reforçar a lógica e evitar erros de tipos, usando a extensão tsx.\n";
- const frontEndArquitetura = "Também criei diversas interfaces, agrupei elas em uma pasta de utilidades, onde estavam bem separadas, algumas partes importantes na nossa aplicação.\n";
- const frontEndOrganizacao = "Também foram arquitetadas pastas para componentes, rotas, hooks, layout global, entre outras partes, para manter o código bem encapsulado e organizado.\n";
- 
- const backEndDescricao = "Back-End: Já no Back-end, gosto naturalmente de desenvolver em TypeScript, também separando e encapsulando as lógicas, para serem reutilizadas e evitar também uma quantidade significativa de imports.\n";
- const backEndDesafio = "Porém, como se tratava de um desenvolvimento diretamente no Electron, tive problemas na hora de compilar as informações de forma separada.\n";
- const backEndSolucao = "Foi aí que recorri a desenvolver o Back-end da aplicação em um único arquivo, pois o objetivo final do App é ser apenas uma experiência e, claro, uma forma de mostrar o que posso fazer.\n";
- const backEndJustificativa = "Portanto, não vi a necessidade de encapsular o Back-End, pois ele é de uso restrito ao Electron, logo somente o Electron vai ter contato com o código.";
- 
- const detailsfinancas = [introducao, objetivo,ferramentas, frontEndDescricao, frontEndArquitetura,frontEndOrganizacao,backEndDescricao,backEndDesafio,backEndSolucao,backEndJustificativa]
- export  {textofinanca,detailsfinancas};
-
+export { textofinanca, detailsfinancas };

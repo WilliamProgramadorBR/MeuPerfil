@@ -1,88 +1,101 @@
-// src/Componentes/GalleryModal.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FaTimes, FaArrowLeft, FaArrowRight } from 'react-icons/fa';  // Importando ícones
+import { FaArrowLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
 
 const ModalOverlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  z-index: 1000;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.76);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
 `;
 
 const ModalContent = styled.div`
   position: relative;
-  max-width: 90vw;  /* Ajuste máximo da largura para o modal */
-  max-height: 90vh; /* Ajuste máximo da altura para o modal */
-  background: #fff;
-  padding: 20px;
+  width: min(1100px, 96vw);
+  height: min(760px, 88vh);
   border-radius: 8px;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.borderColor};
   overflow: hidden;
-  display: flex; /* Flexbox para centrar o conteúdo */
+  display: grid;
+  place-items: center;
+`;
+
+const IconButton = styled.button`
+  position: absolute;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.text};
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #000;
-  z-index: 2;
+const CloseButton = styled(IconButton)`
+  top: 14px;
+  right: 14px;
 `;
 
-const ArrowButton = styled.button`
-  position: absolute;
+const PrevButton = styled(IconButton)`
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #000;
-  z-index: 2;
 `;
 
-const PrevButton = styled(ArrowButton)`
-  left: 10px;
-`;
-
-const NextButton = styled(ArrowButton)`
-  right: 10px;
+const NextButton = styled(IconButton)`
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
 `;
 
 const Content = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  padding: 70px;
+  display: grid;
+  place-items: center;
+
+  @media (max-width: 640px) {
+    padding: 64px 18px;
+  }
 `;
 
 const Media = styled.img`
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Ajusta a imagem dentro dos limites sem cortar */
+  object-fit: contain;
 `;
 
 const Video = styled.video`
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Ajusta o vídeo dentro dos limites sem cortar */
+  object-fit: contain;
 `;
 
 const GalleryModal = ({ items, currentIndex, onClose }) => {
   const [index, setIndex] = useState(currentIndex);
+  const currentItem = items[index];
+  const isVideo = /\.mp4($|\?)/i.test(currentItem);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const handlePrev = () => {
     setIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
@@ -93,24 +106,28 @@ const GalleryModal = ({ items, currentIndex, onClose }) => {
   };
 
   return (
-    <ModalOverlay>
-      <ModalContent>
-        <CloseButton onClick={onClose}>
-          <FaTimes /> {/* Ícone de fechar */}
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(event) => event.stopPropagation()}>
+        <CloseButton type="button" onClick={onClose} aria-label="Fechar galeria">
+          <FaTimes />
         </CloseButton>
         <Content>
-          {items[index].endsWith('.mp4') ? (
-            <Video src={items[index]} controls />
+          {isVideo ? (
+            <Video src={currentItem} controls />
           ) : (
-            <Media src={items[index]} alt={`Gallery item ${index}`} />
+            <Media src={currentItem} alt={`Item da galeria ${index + 1}`} />
           )}
         </Content>
-        <PrevButton onClick={handlePrev}>
-          <FaArrowLeft /> {/* Ícone de seta para esquerda */}
-        </PrevButton>
-        <NextButton onClick={handleNext}>
-          <FaArrowRight /> {/* Ícone de seta para direita */}
-        </NextButton>
+        {items.length > 1 && (
+          <>
+            <PrevButton type="button" onClick={handlePrev} aria-label="Item anterior">
+              <FaArrowLeft />
+            </PrevButton>
+            <NextButton type="button" onClick={handleNext} aria-label="Proximo item">
+              <FaArrowRight />
+            </NextButton>
+          </>
+        )}
       </ModalContent>
     </ModalOverlay>
   );

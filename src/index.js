@@ -1,13 +1,10 @@
-// src/App.js
 import React, { useContext } from 'react';
-import ReactDOM from 'react-dom';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from 'styled-components';
 import Routes from './Rotas/Routes';
-import { ThemeContext, ThemeProvider as CustomThemeProvider } from './Styles/context/ThemeContext';
 import BotaoDark from './Styles/Config_modo_tema/Tema_modo';
 import GlobalStyles from './Styles/Estilo_global';
-
-
+import { ThemeContext, ThemeProvider as CustomThemeProvider } from './Styles/context/ThemeContext';
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -15,20 +12,18 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <React.StrictMode>
-        <Routes />
-      </React.StrictMode>
+      <Routes />
       <BotaoDark />
     </ThemeProvider>
   );
 };
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <CustomThemeProvider>
-    <App />
-  </CustomThemeProvider>
+  <React.StrictMode>
+    <CustomThemeProvider>
+      <App />
+    </CustomThemeProvider>
+  </React.StrictMode>
 );

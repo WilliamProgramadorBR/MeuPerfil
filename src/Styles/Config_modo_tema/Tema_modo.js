@@ -1,25 +1,21 @@
-// src/Componentes/mododarkin/BotaoDark.js
 import React, { useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import { StyledDiv, StyledButtonContainer } from './StyledWebsite';
+import { ThemeContext } from '../context/ThemeContext';
+import { StyledButtonContainer } from './StyledWebsite';
 
 const BotaoDark = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const isDarkMode = theme.background === '#000000'; // Verifique o valor correto para o modo escuro
+  const isDarkMode = theme.mode === 'dark';
 
   return (
-  
-      <StyledButtonContainer
-        theme={theme}
-        onClick={toggleTheme}
-        style={{ position: 'fixed', top: '20px', right: '20px', zIndex: '1000' }}
-      >
-        <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="2x" />
-        {isDarkMode ? ' Claro' : ' Escuro'}
-      </StyledButtonContainer>
-
+    <StyledButtonContainer
+      aria-label={isDarkMode ? 'Ativar tema claro' : 'Ativar tema escuro'}
+      onClick={toggleTheme}
+      title={isDarkMode ? 'Tema claro' : 'Tema escuro'}
+    >
+      <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
+    </StyledButtonContainer>
   );
 };
 

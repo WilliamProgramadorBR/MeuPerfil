@@ -1,37 +1,32 @@
 import React from 'react';
-import { Footer, FooterContent, FooterIcons } from './rodapestyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { profile } from '../../data/portfolio';
+import { Footer, FooterContent, FooterIcons } from './rodapestyles';
 
 const FooterComponent = () => {
-  // Função para abrir o cliente de e-mail padrão com um novo e-mail
-  const handleEmailClick = () => {
-    window.location.href = 'mailto:william.devbackend@gmail.com?subject=Assunto&body=Mensagem';
-  };
-
-  // Função para redirecionar para o WhatsApp
-  const handleWhatsappClick = () => {
-    window.location.href = 'https://wa.me/5521977150144';
-  };
-
-  // Função para iniciar uma chamada telefônica
-  const handlePhoneClick = () => {
-    window.location.href = 'tel:+5521977150144';
-  };
+  const year = new Date().getFullYear();
 
   return (
     <Footer>
       <FooterContent>
-        <p><FontAwesomeIcon icon={faWhatsapp} /> WhatsApp: +55 21 97715-0144</p>
-        <p><FontAwesomeIcon icon={faEnvelope} /> Email: william.devbackend@gmail.com</p>
-        <p><FontAwesomeIcon icon={faPhone} /> Desenvolvido por: William Oliveira</p>
+        <p>© {year} William Oliveira. Portfolio, projetos, apps e Rotina AI.</p>
+        <FooterIcons>
+          <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <FontAwesomeIcon icon={faWhatsapp} />
+          </a>
+          <a href={`mailto:${profile.email}`} aria-label="Email">
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+        </FooterIcons>
       </FooterContent>
-      <FooterIcons>
-        <FontAwesomeIcon icon={faWhatsapp} onClick={handleWhatsappClick} style={{ cursor: 'pointer' }} />
-        <FontAwesomeIcon icon={faEnvelope} onClick={handleEmailClick} style={{ cursor: 'pointer' }} />
-        <FontAwesomeIcon icon={faPhone} onClick={handlePhoneClick} style={{ cursor: 'pointer' }} />
-      </FooterIcons>
     </Footer>
   );
 };

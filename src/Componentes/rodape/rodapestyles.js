@@ -1,64 +1,62 @@
 import styled from 'styled-components';
 
-// Container do Footer
 export const Footer = styled.footer`
   background: ${({ theme }) => theme.footerBackground};
-  color: ${({ theme }) => theme.text};
-  padding: 20px;
-  border-top: 1px solid ${({ theme }) => theme.borderColor};
-  display: flex;
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  box-sizing: border-box; /* Garantir que o padding não afete a largura total */
-  left: 0; /* Garantir que o footer comece na borda esquerda */
-  right: 0; /* Garantir que o footer vá até a borda direita */
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 10px;
-  }
+  color: rgba(255, 255, 255, 0.78);
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 `;
 
-// Conteúdo do Footer
 export const FooterContent = styled.div`
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 100px; /* Espaçamento entre os itens */
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-
-  @media (max-width: 768px) {
-    display: none; /* Ocultar o conteúdo em telas pequenas */
-  }
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
 
   p {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
     margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
 
-    svg {
-      margin-right: 8px;
-    }
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #ffffff;
   }
 `;
 
 export const FooterIcons = styled.div`
-  display: none; /* Ocultar ícones em telas grandes */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: row; /* Manter ícones em linha na tela pequena */
+  a {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: inline-flex;
     align-items: center;
-    margin-left: center;
-    gap: 35px; /* Espaçamento entre os ícones */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    
-    svg {
-      cursor: pointer;
-      font-size: 24px;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.08);
     }
   }
 `;

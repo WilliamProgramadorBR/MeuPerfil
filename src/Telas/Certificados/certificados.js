@@ -1,155 +1,235 @@
-import React, { useState, useEffect } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { FaArrowLeft, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Algoritmos from '../../Fotos/AlgoritmosLogicas.jpg';
 import Nodejs from '../../Fotos/Nodejs.jpg';
 import ReactCurso from '../../Fotos/React.jpg';
 import Layout from '../../Componentes/menu-lateral/Layout';
+import Footer from '../../Componentes/rodape/rodape';
 
+const certificados = [
+  {
+    url: Algoritmos,
+    titulo: 'Algoritmos e lógica',
+    texto: 'Base de pensamento computacional, estruturação de problemas e construção de soluções passo a passo.',
+  },
+  {
+    url: Nodejs,
+    titulo: 'Node.js',
+    texto: 'Fundamentos para desenvolvimento full stack, APIs e back-end com JavaScript.',
+  },
+  {
+    url: ReactCurso,
+    titulo: 'React',
+    texto: 'Construção de interfaces web, componentes reutilizáveis e experiências responsivas.',
+  },
+];
 
-const CertificadosContainer = styled.div`
-  display: flex;
-  overflow: auto;
+const Page = styled.main`
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 64px 0 88px;
+`;
+
+const BackLink = styled(Link)`
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.text};
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 0%;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
+  &:hover {
+    transform: translateY(-2px);
+    border-color: ${({ theme }) => theme.primaryColor};
+    background: ${({ theme }) => theme.hoverBackground};
   }
 `;
 
-const CertificadoContainer = styled.div`
-  position: relative;
-  flex: 0 0 auto;
-  width: 100%;
-  margin-top: 20%;
-  max-width: 300px;
-  box-sizing: border-box;
-  text-align: center;
-  margin-right: 10%;
-  transition: max-width 0.3s ease;
+const Header = styled.header`
+  max-width: 780px;
+  margin-top: 38px;
+  margin-bottom: 34px;
+`;
 
-  @media (max-width: 768px) {
-    margin-top: 35%;
-    max-width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
+const Eyebrow = styled.p`
+  margin: 0 0 10px;
+  color: ${({ theme }) => theme.primaryColor};
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  color: ${({ theme }) => theme.text};
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 1;
+`;
+
+const Lead = styled.p`
+  margin: 18px 0 0;
+  color: ${({ theme }) => theme.textMuted};
+  line-height: 1.75;
+`;
+
+const Grid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+
+  @media (max-width: 920px) {
+    grid-template-columns: 1fr;
   }
+`;
+
+const Card = styled.article`
+  border-radius: 8px;
+  overflow: hidden;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  box-shadow: ${({ theme }) => theme.shadow};
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: ${({ theme }) => theme.primaryColor};
+  }
+`;
+
+const CertificateButton = styled.button`
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
 `;
 
 const CertificadoImage = styled.img`
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
 `;
 
-const CertificadoText = styled.p`
-  display: ${props => (props.isVisible ? 'block' : 'none')};
-  font-family: '', sans-serif;
-`;
-
-const PopupContainer = styled.div`
-  position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: red;
+const CardBody = styled.div`
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 999;
-  
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 1.16rem;
+  }
+
+  p {
+    margin: 0;
+    color: ${({ theme }) => theme.textMuted};
+    line-height: 1.65;
+  }
 `;
 
-const PopupText = styled.p`
-  margin: 0;
-  
-  font-family: 'Arial', sans-serif;
+const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  display: grid;
+  place-items: center;
+`;
+
+const ModalContent = styled.div`
+  width: min(980px, 96vw);
+  max-height: 90vh;
+  border-radius: 8px;
+  overflow: hidden;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  position: relative;
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.text};
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Popup = ({ text, onClose }) => {
-  return (
-    <PopupContainer>
-      <CloseButton onClick={onClose}>&times;</CloseButton>
-      <PopupText>{text}</PopupText>
-    </PopupContainer>
-  );
-};
-
-// ... (importações)
-// ... (importações)
+const ModalImage = styled.img`
+  width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+`;
 
 const Certificados = () => {
-  const certificados = [
-    { url: Algoritmos, texto: 'Curso feito para aprender as lógicas e algoritmos, gostei muito do conteúdo', texto2: 'Clique no próximo para ver mais'},
-    { url: Nodejs, texto: 'Esse foi um dos cursos pioneiros para meu desenvolvimento em node, amei', texto2: 'Focado em fullstack, fiz para reforça os conhecimentos. Precisava de mais estudo para atuar no site Helpdesk. O terceiro foi muito legal.' },
-    { url: ReactCurso, texto: 'Como disse em outras páginas, gosto de entender tanto o front quanto o back-end.', texto2: 'Realizado para ter uma base em desenvolvimento front-end, aconselho muito os futuros devs fazer esse curso, vale a pena.' },
-  ];
-
-  const [textoVisivel, setTextoVisivel] = useState('');
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupText, setPopupText] = useState('');
-
-  const handleMostrarTexto = (texto, texto2) => {
-    setTextoVisivel(texto);
-    setShowPopup(true);
-    setPopupText(texto2); // Define o texto personalizado para o popup
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-
-  useEffect(() => {
-    const hasVisited = localStorage.getItem('hasVisited');
-    if (!hasVisited) {
-      setShowPopup(true);
-      localStorage.setItem('hasVisited', 'true');
-
-      const popupTimeout = setTimeout(() => {
-        setShowPopup(false);
-      }, 5000);
-
-      return () => clearTimeout(popupTimeout);
-    }
-  }, []);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   return (
-    <div>
-      
-      <Layout>
-      {showPopup && <Popup text={popupText} onClose={handleClosePopup} />}
-      <CertificadosContainer>
-        {certificados.map((certificado, index) => (
-          <CertificadoContainer
-            key={index}
-            onClick={() => handleMostrarTexto(certificado.texto, certificado.texto2)}
-          >
-            <CertificadoImage
-              src={certificado.url}
-              alt={`Certificado ${index + 1}`}
-            />
-            <CertificadoText isVisible={certificado.texto === textoVisivel}>
-              {certificado.texto}
-            </CertificadoText>
-          </CertificadoContainer>
-        ))}
-      </CertificadosContainer>
-      </Layout>
-    </div>
+    <Layout>
+      <Page>
+        <BackLink to="/">
+          <FaArrowLeft /> Voltar para o portfolio
+        </BackLink>
+
+        <Header>
+          <Eyebrow>Certificados</Eyebrow>
+          <Title>Formação contínua e base técnica.</Title>
+          <Lead>
+            Alguns registros de estudos que reforçam minha base em lógica, back-end, front-end e
+            desenvolvimento de aplicações completas.
+          </Lead>
+        </Header>
+
+        <Grid>
+          {certificados.map((certificado) => (
+            <Card key={certificado.titulo}>
+              <CertificateButton type="button" onClick={() => setSelectedCertificate(certificado)}>
+                <CertificadoImage src={certificado.url} alt={certificado.titulo} />
+              </CertificateButton>
+              <CardBody>
+                <h2>{certificado.titulo}</h2>
+                <p>{certificado.texto}</p>
+              </CardBody>
+            </Card>
+          ))}
+        </Grid>
+      </Page>
+
+      {selectedCertificate && (
+        <ModalOverlay onClick={() => setSelectedCertificate(null)}>
+          <ModalContent onClick={(event) => event.stopPropagation()}>
+            <CloseButton
+              type="button"
+              onClick={() => setSelectedCertificate(null)}
+              aria-label="Fechar certificado"
+            >
+              <FaTimes />
+            </CloseButton>
+            <ModalImage src={selectedCertificate.url} alt={selectedCertificate.titulo} />
+          </ModalContent>
+        </ModalOverlay>
+      )}
+
+      <Footer />
+    </Layout>
   );
 };
 
 export default Certificados;
-
