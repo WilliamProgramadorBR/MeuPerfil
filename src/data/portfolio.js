@@ -15,6 +15,8 @@ import kanbanizeIcon from '../Fotos/kanbanize.png';
 import scrumIcon from '../Fotos/scrum.png';
 import automationImage from '../Fotos/Fotocapa.png';
 import medgrupoAuditImage from '../Fotos/medgrupo-auditoria-ia.svg';
+import mercadoIaImage from '../Fotos/mercado-ia-capa.jpg';
+import mercadoIaIcon from '../Fotos/mercado-ia-icone.png';
 
 export const profile = {
   name: 'William Oliveira',
@@ -171,7 +173,26 @@ export const skillGroups = [
   },
 ];
 
+export const mercadoIa = {
+  version: '0.9.6',
+  repository: 'https://github.com/WilliamProgramadorBR/mercado-ia-pes2021',
+  releaseUrl: 'https://github.com/WilliamProgramadorBR/mercado-ia-pes2021/releases/latest',
+};
+
 export const projects = [
+  {
+    id: 6,
+    title: 'Mercado IA para PES 2021',
+    eyebrow: 'IA, engenharia reversa e games',
+    summary:
+      'Motor externo que transforma a Master Liga do PES 2021 em simulador: dirigentes com identidade, técnicos que estudam o jogador e uma Central com imprensa, vestiário e diretoria.',
+    impact:
+      'Projeto autoral open source: IA simbólica de mercado, rede neural competindo com um modelo estatístico, leitura da memória do jogo via Lua/Sider e edição segura do save criptografado.',
+    stack: ['Python', 'Rede neural', 'PySide6', 'Lua', 'SQLite', 'Engenharia reversa'],
+    image: mercadoIaImage,
+    route: '/projeto/6',
+    repository: mercadoIa.repository,
+  },
   {
     id: 5,
     title: 'Auditoria IA MEDGRUPO',
@@ -323,6 +344,18 @@ export const apps = [
     downloadFileName: 'RotinaAI-v3.0.0.zip',
     repository: profile.github,
     highlights: ['Google Gemini', 'Alarmes inteligentes', 'Modo foco', 'Grupos com chat'],
+  },
+  {
+    title: 'Mercado IA para PES 2021',
+    platform: 'Windows 10 e 11 · PES 2021 + Sider',
+    status: `v${mercadoIa.version} · instalador e versão portátil`,
+    description:
+      'Mercado inteligente, técnicos com rede neural e Central do Técnico para a Master Liga. O instalador já leva o Python embutido; o manual explica Sider e pesXdecrypter.',
+    image: mercadoIaIcon,
+    downloadUrl: mercadoIa.releaseUrl,
+    externalDownload: true,
+    repository: mercadoIa.repository,
+    highlights: ['Rede neural', 'IA adversária', 'Central do Técnico', 'Open source'],
   },
   {
     title: 'Gerenciador financeiro',

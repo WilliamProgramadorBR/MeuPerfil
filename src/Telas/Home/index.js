@@ -520,6 +520,8 @@ const Home = () => {
                           $disabled={!app.downloadUrl}
                           href={app.downloadUrl || '#apps'}
                           download={app.downloadFileName || undefined}
+                          target={app.externalDownload ? '_blank' : undefined}
+                          rel={app.externalDownload ? 'noopener noreferrer' : undefined}
                         >
                           Download <FaDownload />
                         </ButtonLink>

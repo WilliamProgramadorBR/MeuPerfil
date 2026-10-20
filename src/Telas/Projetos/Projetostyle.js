@@ -198,6 +198,108 @@ export const GalleryButton = styled.button`
   }
 `;
 
+export const VideoSection = styled.section`
+  margin-top: 56px;
+  display: grid;
+  gap: 18px;
+`;
+
+export const VideoSectionTitle = styled.h2`
+  margin: 0;
+  color: ${({ theme }) => theme.text};
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+`;
+
+export const VideoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const VideoCard = styled.article`
+  border-radius: 8px;
+  overflow: hidden;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  display: grid;
+  align-content: start;
+`;
+
+export const VideoFrame = styled.div`
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+
+  video,
+  iframe,
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+  }
+`;
+
+export const VideoPlayButton = styled.button`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  display: grid;
+  place-items: center;
+
+  span {
+    position: relative;
+    z-index: 1;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.primaryColor};
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover span {
+    transform: scale(1.08);
+  }
+`;
+
+export const VideoBody = styled.div`
+  padding: 16px 18px 18px;
+  display: grid;
+  gap: 8px;
+
+  h3 {
+    margin: 0;
+    color: ${({ theme }) => theme.text};
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin: 0;
+    color: ${({ theme }) => theme.textMuted};
+    line-height: 1.6;
+  }
+
+  small {
+    color: ${({ theme }) => theme.accentColor};
+    font-weight: 800;
+  }
+`;
+
 export const DetailGrid = styled.div`
   margin-top: 42px;
   display: grid;
