@@ -5,6 +5,7 @@ import Layout from '../../Componentes/menu-lateral/Layout';
 import Footer from '../../Componentes/rodape/rodape';
 import GalleryModal from '../../Componentes/Gallery';
 import ProjectVideos from '../../Componentes/Videos';
+import ProjectVerticals from '../../Componentes/Verticais';
 import { mercadoIa, profile, rotinaAi } from '../../data/portfolio';
 import { textofinanca, detailsfinancas } from '../../Textos_projetos/projeto_financas';
 import { textosuporte, suporteimg, details_suporte } from '../../Textos_projetos/projeto_helpdesk';
@@ -74,6 +75,14 @@ const projectData = {
     videosTitle: 'O projeto em vídeo',
     videos: [
       {
+        title: 'Como a rede neural corrigiu a minha Master Liga',
+        description:
+          'Os três problemas que encontrei no código do PES 2021 (escalação por sorteio, tática sem fundamento e o índice de 0 a 22) e como resolvi cada um, com melhores momentos de City × United.',
+        duration: '32 min',
+        youtubeId: 'KgIAcsMVEs0',
+        destaque: true,
+      },
+      {
         title: 'Por que e como criei o Mercado IA',
         description:
           'A motivação, o mercado com diretores de futebol, a rede neural tática e o duelo entre estatística e rede neural, explicados por mim.',
@@ -116,6 +125,28 @@ const projectData = {
         poster: `${mercadoIaVideos}/rede-neural.jpg`,
       },
     ],
+    stories: [
+      'Eu cansei de ganhar no PES',
+      'Problema 1: escalação no sorteio',
+      'Por trás do código',
+      'A IA que estuda você',
+      'Na prática: City × United',
+      'Imprensa, redes e vestiário',
+    ].map((title, i) => ({
+      title,
+      src: `${mercadoIaVideos}/stories/story-${i + 1}.mp4`,
+      poster: `${mercadoIaVideos}/stories/story-${i + 1}.jpg`,
+    })),
+    reels: [
+      'O PES 2021 escalava os times no sorteio',
+      'A IA estudou o meu time',
+      'Esse centroavante é meu irmão',
+      'Foi bola!',
+    ].map((title, i) => ({
+      title,
+      src: `${mercadoIaVideos}/reels/reel-${i + 1}.mp4`,
+      poster: `${mercadoIaVideos}/reels/reel-${i + 1}.jpg`,
+    })),
     details: [
       'O projeto nasceu de uma dor de jogador. Depois de seis anos e doze temporadas de Master Liga, o PES 2021 tinha deixado de desafiar: cinco Premier Leagues seguidas, invicto, no modo lenda. Os jogos de futebol atuais focam no online e perderam a sensação de simulador, e a comunidade continua modificando títulos antigos. Usei as férias para resolver isso com código.',
       'O primeiro problema era o mercado. O jogo repunha peças de forma aleatória, sem olhar nível, estilo ou idade, e com o tempo a Master Liga se desequilibrava: clubes ricos contratavam mal e times sem tradição chegavam à final da Champions. O Mercado IA dá a cada clube um diretor de futebol com perfil (elite, formador, vendedor, reconstrução, modesto ou equilibrado), objetivo de temporada, orçamento e livro-caixa que atravessa as temporadas.',
@@ -300,6 +331,8 @@ const ProjectDetails = () => {
           </ProjectDetailsContainer>
 
           {project.videos && <ProjectVideos title={project.videosTitle || 'Vídeos'} videos={project.videos} />}
+
+          {(project.stories || project.reels) && <ProjectVerticals stories={project.stories} reels={project.reels} />}
 
           <DetailGrid>
             {project.details.map((detail, index) => (

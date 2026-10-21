@@ -211,6 +211,157 @@ export const VideoSectionTitle = styled.h2`
   line-height: 1.15;
 `;
 
+export const VerticalSection = styled.section`
+  margin-top: 56px;
+  display: grid;
+  gap: 22px;
+`;
+
+export const StoriesLayout = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 32px;
+  align-items: center;
+
+  p,
+  li {
+    color: ${({ theme }) => theme.textMuted};
+    line-height: 1.7;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const vertical = `
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000000;
+
+  video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const StoryFrame = styled.div`
+  ${vertical}
+  width: 100%;
+  max-width: 340px;
+  justify-self: center;
+  box-shadow: ${({ theme }) => theme.shadow};
+`;
+
+export const StoryBars = styled.div`
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+
+  span {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    overflow: hidden;
+  }
+
+  i {
+    display: block;
+    height: 100%;
+    background: #ffffff;
+  }
+`;
+
+export const StoryNav = styled.button`
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  ${({ $lado }) => ($lado === 'esquerda' ? 'left: 0;' : 'right: 0;')}
+  width: 30%;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: ${({ $lado }) => ($lado === 'esquerda' ? 'flex-start' : 'flex-end')};
+  padding: 0 10px;
+  transition: opacity 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.9;
+  }
+`;
+
+export const StoryPlayButton = styled.button`
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  span {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.primaryColor};
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+  }
+`;
+
+export const ReelsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+`;
+
+export const ReelCard = styled.article`
+  display: grid;
+  gap: 10px;
+  align-content: start;
+
+  h3 {
+    margin: 0;
+    color: ${({ theme }) => theme.text};
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+`;
+
+export const ReelFrame = styled.div`
+  ${vertical}
+  border: 1px solid ${({ theme }) => theme.borderColor};
+`;
+
 export const VideoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -228,6 +379,7 @@ export const VideoCard = styled.article`
   border: 1px solid ${({ theme }) => theme.borderColor};
   display: grid;
   align-content: start;
+  grid-column: ${({ $destaque }) => ($destaque ? '1 / -1' : 'auto')};
 `;
 
 export const VideoFrame = styled.div`

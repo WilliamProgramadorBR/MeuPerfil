@@ -69,7 +69,7 @@ const ProjectVideos = ({ title, videos }) => {
       <VideoSectionTitle>{title}</VideoSectionTitle>
       <VideoGrid>
         {available.map((video) => (
-          <VideoCard key={video.title}>
+          <VideoCard key={video.title} $destaque={video.destaque}>
             <VideoFrame>
               {video.youtubeId ? <YoutubePlayer video={video} /> : <PreviewPlayer video={video} />}
             </VideoFrame>
