@@ -57,7 +57,16 @@ export const education = [
     period: 'fevereiro de 2026 - fevereiro de 2027',
     status: 'Em andamento',
     description:
-      'Formação focada em uso prático de inteligência artificial no desenvolvimento de produtos, automações e experiências digitais.',
+      'Formação focada em uso prático de inteligência artificial no desenvolvimento de produtos, automações e experiências digitais. Na prática, apliquei redes neurais e aprendizado de máquina no Mercado IA para PES 2021.',
+    subjects: [
+      'Fundamentos e Algoritmos de Machine Learning',
+      'Machine & Deep Learning',
+      'Aplicações Avançadas de IA',
+      'Estatística Aplicada e Testes de Hipóteses',
+      'Governança, Preparação e Visualização de Dados',
+      'Cloud Computing',
+      'Implantação de Softwares na Nuvem',
+    ],
   },
   {
     school: 'Estácio',

@@ -263,6 +263,13 @@ const Home = () => {
                     <small>{item.school}</small>
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
+                    {item.subjects && (
+                      <Tags>
+                        {item.subjects.map((subject) => (
+                          <Tag key={subject}>{subject}</Tag>
+                        ))}
+                      </Tags>
+                    )}
                     <EducationMeta>
                       <StatusPill>{item.status}</StatusPill>
                       <StatusPill>{item.period}</StatusPill>
